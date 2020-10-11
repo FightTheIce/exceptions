@@ -1,433 +1,777 @@
 <?php
-/**
- * Exceptions Test
- *
- * @package   FightTheIce\Exceptions
- * @author    Alain Schlesser <alain.schlesser@gmail.com>
- * @license   GPL-2.0+
- * @link      http://www.brightnucleus.com/
- * @copyright 2015-2016 Alain Schlesser, Bright Nucleus
- */
 
-namespace FightTheIce\Exceptions;
+class ExceptionsTest extends \PHPUnit\Framework\TestCase
+{
 
-/**
- * Class ExceptionsTest
- *
- * @since   0.1.0
- *
- * @package FightTheIce\Exceptions
- * @author  Alain Schlesser <alain.schlesser@gmail.com>
- */
-class ExceptionsTest extends \PHPUnit\Framework\TestCase {
-
-    /**
-     * Test creation of Exceptions.
-     *
-     * @covers       \FightTheIce\Exceptions\ModuleExceptionTrait::__construct
-     *
-     * @dataProvider exceptionsCreationDataProvider
-     *
-     * @since        0.1.0
-     *
-     * @param string $moduleName        Name of the module to pass into the
-     *                                  exception.
-     * @param string $createClass       Exception class to create.
-     * @param array  $expectedToCatch   Array of exceptions that were caught.
-     */
-    public function testExceptionsCreation($moduleName, $createClass, $expectedToCatch) {
-
-        // What follows is a horrible nesting structure that tries to catch
-        // exceptions at all levels and builds an array with the names of the
-        // exceptions it caught.
-        // Apparently, PHP does not like you to catch a variable exception...
-
-        $caught = [];
-        try {
-            try {
-                try {
-                    try {
-                        try {
-                            $exception = new $createClass();
-                            /** @var \FightTheIce\Exceptions\ExceptionInterface $exception */
-                            $exception->setModule($moduleName);
-                            throw $exception;
-                        } catch (\FightTheIce\Exceptions\AssertionFailedException $exception) {
-                            $caught[] = '\FightTheIce\Exceptions\AssertionFailedException';
-                            $this->assertEquals(
-                                $moduleName,
-                                $exception->getModule()
-                            );
-                            throw $exception;
-                        } catch (\FightTheIce\Exceptions\BadFunctionCallException $exception) {
-                            $caught[] = '\FightTheIce\Exceptions\BadFunctionCallException';
-                            $this->assertEquals(
-                                $moduleName,
-                                $exception->getModule()
-                            );
-                            throw $exception;
-                        } catch (\FightTheIce\Exceptions\BadMethodCallException $exception) {
-                            $caught[] = '\FightTheIce\Exceptions\BadMethodCallException';
-                            $this->assertEquals(
-                                $moduleName,
-                                $exception->getModule()
-                            );
-                            throw $exception;
-                        } catch (\FightTheIce\Exceptions\DomainException $exception) {
-                            $caught[] = '\FightTheIce\Exceptions\DomainException';
-                            $this->assertEquals(
-                                $moduleName,
-                                $exception->getModule()
-                            );
-                            throw $exception;
-                        } catch (\FightTheIce\Exceptions\InvalidArgumentException $exception) {
-                            $caught[] = '\FightTheIce\Exceptions\InvalidArgumentException';
-                            $this->assertEquals(
-                                $moduleName,
-                                $exception->getModule()
-                            );
-                            throw $exception;
-                        } catch (\FightTheIce\Exceptions\LengthException $exception) {
-                            $caught[] = '\FightTheIce\Exceptions\LengthException';
-                            $this->assertEquals(
-                                $moduleName,
-                                $exception->getModule()
-                            );
-                            throw $exception;
-                        } catch (\FightTheIce\Exceptions\LogicException $exception) {
-                            $caught[] = '\FightTheIce\Exceptions\LogicException';
-                            $this->assertEquals(
-                                $moduleName,
-                                $exception->getModule()
-                            );
-                            throw $exception;
-                        } catch (\FightTheIce\Exceptions\OutOfBoundsException $exception) {
-                            $caught[] = '\FightTheIce\Exceptions\OutOfBoundsException';
-                            $this->assertEquals(
-                                $moduleName,
-                                $exception->getModule()
-                            );
-                            throw $exception;
-                        } catch (\FightTheIce\Exceptions\OutOfRangeException $exception) {
-                            $caught[] = '\FightTheIce\Exceptions\OutOfRangeException';
-                            $this->assertEquals(
-                                $moduleName,
-                                $exception->getModule()
-                            );
-                            throw $exception;
-                        } catch (\FightTheIce\Exceptions\OverflowException $exception) {
-                            $caught[] = '\FightTheIce\Exceptions\OverflowException';
-                            $this->assertEquals(
-                                $moduleName,
-                                $exception->getModule()
-                            );
-                            throw $exception;
-                        } catch (\FightTheIce\Exceptions\RangeException $exception) {
-                            $caught[] = '\FightTheIce\Exceptions\RangeException';
-                            $this->assertEquals(
-                                $moduleName,
-                                $exception->getModule()
-                            );
-                            throw $exception;
-                        } catch (\FightTheIce\Exceptions\RuntimeException $exception) {
-                            $caught[] = '\FightTheIce\Exceptions\RuntimeException';
-                            $this->assertEquals(
-                                $moduleName,
-                                $exception->getModule()
-                            );
-                            throw $exception;
-                        } catch (\FightTheIce\Exceptions\UnderflowException $exception) {
-                            $caught[] = '\FightTheIce\Exceptions\UnderflowException';
-                            $this->assertEquals(
-                                $moduleName,
-                                $exception->getModule()
-                            );
-                            throw $exception;
-                        } catch (\FightTheIce\Exceptions\UnexpectedValueException $exception) {
-                            $caught[] = '\FightTheIce\Exceptions\UnexpectedValueException';
-                            $this->assertEquals(
-                                $moduleName,
-                                $exception->getModule()
-                            );
-                            throw $exception;
-                        }
-                    } catch (\FightTheIce\Exceptions\ExceptionInterface $exception) {
-                        $caught[] = '\FightTheIce\Exceptions\ExceptionInterface';
-                        $this->assertEquals(
-                            $moduleName,
-                            $exception->getModule()
-                        );
-                        throw $exception;
-                    }
-                } catch (\BadMethodCallException $exception) {
-                    $caught[] = '\BadMethodCallException';
-                    $this->assertEquals(
-                        $moduleName,
-                        $exception->getModule()
-                    );
-                    throw $exception;
-                } catch (\BadFunctionCallException $exception) {
-                    $caught[] = '\BadFunctionCallException';
-                    $this->assertEquals(
-                        $moduleName,
-                        $exception->getModule()
-                    );
-                    throw $exception;
-                } catch (\DomainException $exception) {
-                    $caught[] = '\DomainException';
-                    $this->assertEquals(
-                        $moduleName,
-                        $exception->getModule()
-                    );
-                    throw $exception;
-                } catch (\InvalidArgumentException $exception) {
-                    $caught[] = '\InvalidArgumentException';
-                    $this->assertEquals(
-                        $moduleName,
-                        $exception->getModule()
-                    );
-                    throw $exception;
-                } catch (\LengthException $exception) {
-                    $caught[] = '\LengthException';
-                    $this->assertEquals(
-                        $moduleName,
-                        $exception->getModule()
-                    );
-                    throw $exception;
-                } catch (\OutOfBoundsException $exception) {
-                    $caught[] = '\OutOfBoundsException';
-                    $this->assertEquals(
-                        $moduleName,
-                        $exception->getModule()
-                    );
-                    throw $exception;
-                } catch (\OutOfRangeException $exception) {
-                    $caught[] = '\OutOfRangeException';
-                    $this->assertEquals(
-                        $moduleName,
-                        $exception->getModule()
-                    );
-                    throw $exception;
-                } catch (\OverflowException $exception) {
-                    $caught[] = '\OverflowException';
-                    $this->assertEquals(
-                        $moduleName,
-                        $exception->getModule()
-                    );
-                    throw $exception;
-                } catch (\RangeException $exception) {
-                    $caught[] = '\RangeException';
-                    $this->assertEquals(
-                        $moduleName,
-                        $exception->getModule()
-                    );
-                    throw $exception;
-                } catch (\UnderflowException $exception) {
-                    $caught[] = '\UnderflowException';
-                    $this->assertEquals(
-                        $moduleName,
-                        $exception->getModule()
-                    );
-                    throw $exception;
-                } catch (\UnexpectedValueException $exception) {
-                    $caught[] = '\UnexpectedValueException';
-                    $this->assertEquals(
-                        $moduleName,
-                        $exception->getModule()
-                    );
-                    throw $exception;
-                }
-            } catch (\LogicException $exception) {
-                $caught[] = '\LogicException';
-                $this->assertEquals($moduleName, $exception->getModule());
-                throw $exception;
-            } catch (\RuntimeException $exception) {
-                $caught[] = '\RuntimeException';
-                $this->assertEquals($moduleName, $exception->getModule());
-                throw $exception;
-            }
-        } catch (\Exception $exception) {
-            $caught[] = '\Exception';
-            $this->assertEquals($moduleName, $exception->getModule());
-        }
-        $this->assertEquals($expectedToCatch, $caught);
+    public function testBadFunctionCallExceptionFightTheIce_Exceptions_BadFunctionCallExceptionException()
+    {
+        $this->expectException(\FightTheIce\Exceptions\BadFunctionCallException::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwBadFunctionCallException();
     }
 
-    /**
-     * Provide testable data to the testFeatureSupport() method.
-     *
-     * @since 0.1.0
-     *
-     * @return array
-     */
-    public function exceptionsCreationDataProvider() {
-        return [
-            // string $moduleName, string $createClass, array $expectedToCatch
-            [
-                'BadFunctionCallException Test Module',
-                '\FightTheIce\Exceptions\BadFunctionCallException',
-                [
-                    '\FightTheIce\Exceptions\BadFunctionCallException',
-                    '\FightTheIce\Exceptions\ExceptionInterface',
-                    '\BadFunctionCallException',
-                    '\LogicException',
-                    '\Exception',
-                ],
-            ],
-            [
-                'BadMethodCallException Test Module',
-                '\FightTheIce\Exceptions\BadMethodCallException',
-                [
-                    '\FightTheIce\Exceptions\BadMethodCallException',
-                    '\FightTheIce\Exceptions\ExceptionInterface',
-                    '\BadMethodCallException',
-                    '\LogicException',
-                    '\Exception',
-                ],
-            ],
-            [
-                'DomainException Test Module',
-                '\FightTheIce\Exceptions\DomainException',
-                [
-                    '\FightTheIce\Exceptions\DomainException',
-                    '\FightTheIce\Exceptions\ExceptionInterface',
-                    '\DomainException',
-                    '\LogicException',
-                    '\Exception',
-                ],
-            ],
-            [
-                'InvalidArgumentException Test Module',
-                '\FightTheIce\Exceptions\InvalidArgumentException',
-                [
-                    '\FightTheIce\Exceptions\InvalidArgumentException',
-                    '\FightTheIce\Exceptions\ExceptionInterface',
-                    '\InvalidArgumentException',
-                    '\LogicException',
-                    '\Exception',
-                ],
-            ],
-            [
-                'LengthException Test Module',
-                '\FightTheIce\Exceptions\LengthException',
-                [
-                    '\FightTheIce\Exceptions\LengthException',
-                    '\FightTheIce\Exceptions\ExceptionInterface',
-                    '\LengthException',
-                    '\LogicException',
-                    '\Exception',
-                ],
-            ],
-            [
-                'LogicException Test Module',
-                '\FightTheIce\Exceptions\LogicException',
-                [
-                    '\FightTheIce\Exceptions\LogicException',
-                    '\FightTheIce\Exceptions\ExceptionInterface',
-                    '\LogicException',
-                    '\Exception',
-                ],
-            ],
-            [
-                'OutOfBoundsException Test Module',
-                '\FightTheIce\Exceptions\OutOfBoundsException',
-                [
-                    '\FightTheIce\Exceptions\OutOfBoundsException',
-                    '\FightTheIce\Exceptions\ExceptionInterface',
-                    '\OutOfBoundsException',
-                    '\RuntimeException',
-                    '\Exception',
-                ],
-            ],
-            [
-                'OutOfRangeException Test Module',
-                '\FightTheIce\Exceptions\OutOfRangeException',
-                [
-                    '\FightTheIce\Exceptions\OutOfRangeException',
-                    '\FightTheIce\Exceptions\ExceptionInterface',
-                    '\OutOfRangeException',
-                    '\LogicException',
-                    '\Exception',
-                ],
-            ],
-            [
-                'OverflowException Test Module',
-                '\FightTheIce\Exceptions\OverflowException',
-                [
-                    '\FightTheIce\Exceptions\OverflowException',
-                    '\FightTheIce\Exceptions\ExceptionInterface',
-                    '\OverflowException',
-                    '\RuntimeException',
-                    '\Exception',
-                ],
-            ],
-            [
-                'RangeException Test Module',
-                '\FightTheIce\Exceptions\RangeException',
-                [
-                    '\FightTheIce\Exceptions\RangeException',
-                    '\FightTheIce\Exceptions\ExceptionInterface',
-                    '\RangeException',
-                    '\RuntimeException',
-                    '\Exception',
-                ],
-            ],
-            [
-                'RuntimeException Test Module',
-                '\FightTheIce\Exceptions\RuntimeException',
-                [
-                    '\FightTheIce\Exceptions\RuntimeException',
-                    '\FightTheIce\Exceptions\ExceptionInterface',
-                    '\RuntimeException',
-                    '\Exception',
-                ],
-            ],
-            [
-                'UnderflowException Test Module',
-                '\FightTheIce\Exceptions\UnderflowException',
-                [
-                    '\FightTheIce\Exceptions\UnderflowException',
-                    '\FightTheIce\Exceptions\ExceptionInterface',
-                    '\UnderflowException',
-                    '\RuntimeException',
-                    '\Exception',
-                ],
-            ],
-            [
-                'UnexpectedValueException Test Module',
-                '\FightTheIce\Exceptions\UnexpectedValueException',
-                [
-                    '\FightTheIce\Exceptions\UnexpectedValueException',
-                    '\FightTheIce\Exceptions\ExceptionInterface',
-                    '\UnexpectedValueException',
-                    '\RuntimeException',
-                    '\Exception',
-                ],
-            ],
-        ];
+    public function testBadFunctionCallExceptionBadFunctionCallExceptionException()
+    {
+        $this->expectException(\BadFunctionCallException::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwBadFunctionCallException();
     }
 
-    /**
-     * Test setting the module name from a Bright Nucleus exception.
-     *
-     * @covers \FightTheIce\Exceptions\ModuleExceptionTrait::getModule
-     * @covers \FightTheIce\Exceptions\ModuleExceptionTrait::setModule
-     */
-    public function testSetModule() {
-        try {
-            $exception = new \FightTheIce\Exceptions\RuntimeException(
-                '',
-                0,
-                null
-            );
-            $exception->setModule('a_module_name');
-            throw $exception;
-        } catch (\Exception $exception) {
-            /** @var \FightTheIce\Exceptions\ExceptionInterface $exception */
-            $this->assertEquals(
-                'a_module_name',
-                $exception->getModule()
-            );
-        }
+    public function testBadFunctionCallExceptionLogicExceptionException()
+    {
+        $this->expectException(\LogicException::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwBadFunctionCallException();
     }
+
+    public function testBadFunctionCallExceptionExceptionException()
+    {
+        $this->expectException(\Exception::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwBadFunctionCallException();
+    }
+
+    public function testBadFunctionCallExceptionFightTheIce_Exceptions_ExceptionsInterfaceException()
+    {
+        $this->expectException(\FightTheIce\Exceptions\ExceptionsInterface::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwBadFunctionCallException();
+    }
+
+    public function testBadMethodCallExceptionFightTheIce_Exceptions_BadMethodCallExceptionException()
+    {
+        $this->expectException(\FightTheIce\Exceptions\BadMethodCallException::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwBadMethodCallException();
+    }
+
+    public function testBadMethodCallExceptionBadMethodCallExceptionException()
+    {
+        $this->expectException(\BadMethodCallException::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwBadMethodCallException();
+    }
+
+    public function testBadMethodCallExceptionBadFunctionCallExceptionException()
+    {
+        $this->expectException(\BadFunctionCallException::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwBadMethodCallException();
+    }
+
+    public function testBadMethodCallExceptionLogicExceptionException()
+    {
+        $this->expectException(\LogicException::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwBadMethodCallException();
+    }
+
+    public function testBadMethodCallExceptionExceptionException()
+    {
+        $this->expectException(\Exception::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwBadMethodCallException();
+    }
+
+    public function testBadMethodCallExceptionFightTheIce_Exceptions_ExceptionsInterfaceException()
+    {
+        $this->expectException(\FightTheIce\Exceptions\ExceptionsInterface::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwBadMethodCallException();
+    }
+
+    public function testDomainExceptionFightTheIce_Exceptions_DomainExceptionException()
+    {
+        $this->expectException(\FightTheIce\Exceptions\DomainException::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwDomainException();
+    }
+
+    public function testDomainExceptionDomainExceptionException()
+    {
+        $this->expectException(\DomainException::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwDomainException();
+    }
+
+    public function testDomainExceptionLogicExceptionException()
+    {
+        $this->expectException(\LogicException::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwDomainException();
+    }
+
+    public function testDomainExceptionExceptionException()
+    {
+        $this->expectException(\Exception::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwDomainException();
+    }
+
+    public function testDomainExceptionFightTheIce_Exceptions_ExceptionsInterfaceException()
+    {
+        $this->expectException(\FightTheIce\Exceptions\ExceptionsInterface::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwDomainException();
+    }
+
+    public function testInvalidArgumentExceptionFightTheIce_Exceptions_InvalidArgumentExceptionException()
+    {
+        $this->expectException(\FightTheIce\Exceptions\InvalidArgumentException::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwInvalidArgumentException();
+    }
+
+    public function testInvalidArgumentExceptionInvalidArgumentExceptionException()
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwInvalidArgumentException();
+    }
+
+    public function testInvalidArgumentExceptionLogicExceptionException()
+    {
+        $this->expectException(\LogicException::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwInvalidArgumentException();
+    }
+
+    public function testInvalidArgumentExceptionExceptionException()
+    {
+        $this->expectException(\Exception::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwInvalidArgumentException();
+    }
+
+    public function testInvalidArgumentExceptionFightTheIce_Exceptions_ExceptionsInterfaceException()
+    {
+        $this->expectException(\FightTheIce\Exceptions\ExceptionsInterface::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwInvalidArgumentException();
+    }
+
+    public function testLengthExceptionFightTheIce_Exceptions_LengthExceptionException()
+    {
+        $this->expectException(\FightTheIce\Exceptions\LengthException::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwLengthException();
+    }
+
+    public function testLengthExceptionLengthExceptionException()
+    {
+        $this->expectException(\LengthException::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwLengthException();
+    }
+
+    public function testLengthExceptionLogicExceptionException()
+    {
+        $this->expectException(\LogicException::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwLengthException();
+    }
+
+    public function testLengthExceptionExceptionException()
+    {
+        $this->expectException(\Exception::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwLengthException();
+    }
+
+    public function testLengthExceptionFightTheIce_Exceptions_ExceptionsInterfaceException()
+    {
+        $this->expectException(\FightTheIce\Exceptions\ExceptionsInterface::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwLengthException();
+    }
+
+    public function testLogicExceptionFightTheIce_Exceptions_LogicExceptionException()
+    {
+        $this->expectException(\FightTheIce\Exceptions\LogicException::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwLogicException();
+    }
+
+    public function testLogicExceptionLogicExceptionException()
+    {
+        $this->expectException(\LogicException::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwLogicException();
+    }
+
+    public function testLogicExceptionExceptionException()
+    {
+        $this->expectException(\Exception::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwLogicException();
+    }
+
+    public function testLogicExceptionFightTheIce_Exceptions_ExceptionsInterfaceException()
+    {
+        $this->expectException(\FightTheIce\Exceptions\ExceptionsInterface::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwLogicException();
+    }
+
+    public function testOutOfBoundsExceptionFightTheIce_Exceptions_OutOfBoundsExceptionException()
+    {
+        $this->expectException(\FightTheIce\Exceptions\OutOfBoundsException::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwOutOfBoundsException();
+    }
+
+    public function testOutOfBoundsExceptionOutOfBoundsExceptionException()
+    {
+        $this->expectException(\OutOfBoundsException::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwOutOfBoundsException();
+    }
+
+    public function testOutOfBoundsExceptionRuntimeExceptionException()
+    {
+        $this->expectException(\RuntimeException::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwOutOfBoundsException();
+    }
+
+    public function testOutOfBoundsExceptionExceptionException()
+    {
+        $this->expectException(\Exception::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwOutOfBoundsException();
+    }
+
+    public function testOutOfBoundsExceptionFightTheIce_Exceptions_ExceptionsInterfaceException()
+    {
+        $this->expectException(\FightTheIce\Exceptions\ExceptionsInterface::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwOutOfBoundsException();
+    }
+
+    public function testOutOfRangeExceptionFightTheIce_Exceptions_OutOfRangeExceptionException()
+    {
+        $this->expectException(\FightTheIce\Exceptions\OutOfRangeException::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwOutOfRangeException();
+    }
+
+    public function testOutOfRangeExceptionOutOfRangeExceptionException()
+    {
+        $this->expectException(\OutOfRangeException::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwOutOfRangeException();
+    }
+
+    public function testOutOfRangeExceptionLogicExceptionException()
+    {
+        $this->expectException(\LogicException::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwOutOfRangeException();
+    }
+
+    public function testOutOfRangeExceptionExceptionException()
+    {
+        $this->expectException(\Exception::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwOutOfRangeException();
+    }
+
+    public function testOutOfRangeExceptionFightTheIce_Exceptions_ExceptionsInterfaceException()
+    {
+        $this->expectException(\FightTheIce\Exceptions\ExceptionsInterface::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwOutOfRangeException();
+    }
+
+    public function testOverflowExceptionFightTheIce_Exceptions_OverflowExceptionException()
+    {
+        $this->expectException(\FightTheIce\Exceptions\OverflowException::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwOverflowException();
+    }
+
+    public function testOverflowExceptionOverflowExceptionException()
+    {
+        $this->expectException(\OverflowException::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwOverflowException();
+    }
+
+    public function testOverflowExceptionRuntimeExceptionException()
+    {
+        $this->expectException(\RuntimeException::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwOverflowException();
+    }
+
+    public function testOverflowExceptionExceptionException()
+    {
+        $this->expectException(\Exception::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwOverflowException();
+    }
+
+    public function testOverflowExceptionFightTheIce_Exceptions_ExceptionsInterfaceException()
+    {
+        $this->expectException(\FightTheIce\Exceptions\ExceptionsInterface::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwOverflowException();
+    }
+
+    public function testRangeExceptionFightTheIce_Exceptions_RangeExceptionException()
+    {
+        $this->expectException(\FightTheIce\Exceptions\RangeException::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwRangeException();
+    }
+
+    public function testRangeExceptionRangeExceptionException()
+    {
+        $this->expectException(\RangeException::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwRangeException();
+    }
+
+    public function testRangeExceptionRuntimeExceptionException()
+    {
+        $this->expectException(\RuntimeException::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwRangeException();
+    }
+
+    public function testRangeExceptionExceptionException()
+    {
+        $this->expectException(\Exception::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwRangeException();
+    }
+
+    public function testRangeExceptionFightTheIce_Exceptions_ExceptionsInterfaceException()
+    {
+        $this->expectException(\FightTheIce\Exceptions\ExceptionsInterface::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwRangeException();
+    }
+
+    public function testRuntimeExceptionFightTheIce_Exceptions_RuntimeExceptionException()
+    {
+        $this->expectException(\FightTheIce\Exceptions\RuntimeException::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwRuntimeException();
+    }
+
+    public function testRuntimeExceptionRuntimeExceptionException()
+    {
+        $this->expectException(\RuntimeException::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwRuntimeException();
+    }
+
+    public function testRuntimeExceptionExceptionException()
+    {
+        $this->expectException(\Exception::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwRuntimeException();
+    }
+
+    public function testRuntimeExceptionFightTheIce_Exceptions_ExceptionsInterfaceException()
+    {
+        $this->expectException(\FightTheIce\Exceptions\ExceptionsInterface::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwRuntimeException();
+    }
+
+    public function testUnderflowExceptionFightTheIce_Exceptions_UnderflowExceptionException()
+    {
+        $this->expectException(\FightTheIce\Exceptions\UnderflowException::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwUnderflowException();
+    }
+
+    public function testUnderflowExceptionUnderflowExceptionException()
+    {
+        $this->expectException(\UnderflowException::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwUnderflowException();
+    }
+
+    public function testUnderflowExceptionRuntimeExceptionException()
+    {
+        $this->expectException(\RuntimeException::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwUnderflowException();
+    }
+
+    public function testUnderflowExceptionExceptionException()
+    {
+        $this->expectException(\Exception::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwUnderflowException();
+    }
+
+    public function testUnderflowExceptionFightTheIce_Exceptions_ExceptionsInterfaceException()
+    {
+        $this->expectException(\FightTheIce\Exceptions\ExceptionsInterface::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwUnderflowException();
+    }
+
+    public function testUnexpectedValueExceptionFightTheIce_Exceptions_UnexpectedValueExceptionException()
+    {
+        $this->expectException(\FightTheIce\Exceptions\UnexpectedValueException::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwUnexpectedValueException();
+    }
+
+    public function testUnexpectedValueExceptionUnexpectedValueExceptionException()
+    {
+        $this->expectException(\UnexpectedValueException::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwUnexpectedValueException();
+    }
+
+    public function testUnexpectedValueExceptionRuntimeExceptionException()
+    {
+        $this->expectException(\RuntimeException::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwUnexpectedValueException();
+    }
+
+    public function testUnexpectedValueExceptionExceptionException()
+    {
+        $this->expectException(\Exception::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwUnexpectedValueException();
+    }
+
+    public function testUnexpectedValueExceptionFightTheIce_Exceptions_ExceptionsInterfaceException()
+    {
+        $this->expectException(\FightTheIce\Exceptions\ExceptionsInterface::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwUnexpectedValueException();
+    }
+
+    public function testExceptionFightTheIce_Exceptions_ExceptionException()
+    {
+        $this->expectException(\FightTheIce\Exceptions\Exception::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwException();
+    }
+
+    public function testExceptionExceptionException()
+    {
+        $this->expectException(\Exception::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwException();
+    }
+
+    public function testExceptionFightTheIce_Exceptions_ExceptionsInterfaceException()
+    {
+        $this->expectException(\FightTheIce\Exceptions\ExceptionsInterface::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwException();
+    }
+
+    public function testErrorExceptionFightTheIce_Exceptions_ErrorExceptionException()
+    {
+        $this->expectException(\FightTheIce\Exceptions\ErrorException::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwErrorException();
+    }
+
+    public function testErrorExceptionErrorExceptionException()
+    {
+        $this->expectException(\ErrorException::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwErrorException();
+    }
+
+    public function testErrorExceptionExceptionException()
+    {
+        $this->expectException(\Exception::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwErrorException();
+    }
+
+    public function testErrorExceptionFightTheIce_Exceptions_ExceptionsInterfaceException()
+    {
+        $this->expectException(\FightTheIce\Exceptions\ExceptionsInterface::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwErrorException();
+    }
+
+    public function testErrorFightTheIce_Exceptions_ErrorException()
+    {
+        $this->expectException(\FightTheIce\Exceptions\Error::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwError();
+    }
+
+    public function testErrorErrorException()
+    {
+        $this->expectException(\Error::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwError();
+    }
+
+    public function testErrorFightTheIce_Exceptions_ExceptionsInterfaceException()
+    {
+        $this->expectException(\FightTheIce\Exceptions\ExceptionsInterface::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwError();
+    }
+
+    public function testArgumentCountErrorFightTheIce_Exceptions_ArgumentCountErrorException()
+    {
+        $this->expectException(\FightTheIce\Exceptions\ArgumentCountError::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwArgumentCountError();
+    }
+
+    public function testArgumentCountErrorArgumentCountErrorException()
+    {
+        $this->expectException(\ArgumentCountError::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwArgumentCountError();
+    }
+
+    public function testArgumentCountErrorTypeErrorException()
+    {
+        $this->expectException(\TypeError::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwArgumentCountError();
+    }
+
+    public function testArgumentCountErrorErrorException()
+    {
+        $this->expectException(\Error::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwArgumentCountError();
+    }
+
+    public function testArgumentCountErrorFightTheIce_Exceptions_ExceptionsInterfaceException()
+    {
+        $this->expectException(\FightTheIce\Exceptions\ExceptionsInterface::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwArgumentCountError();
+    }
+
+    public function testArithmeticErrorFightTheIce_Exceptions_ArithmeticErrorException()
+    {
+        $this->expectException(\FightTheIce\Exceptions\ArithmeticError::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwArithmeticError();
+    }
+
+    public function testArithmeticErrorArithmeticErrorException()
+    {
+        $this->expectException(\ArithmeticError::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwArithmeticError();
+    }
+
+    public function testArithmeticErrorErrorException()
+    {
+        $this->expectException(\Error::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwArithmeticError();
+    }
+
+    public function testArithmeticErrorFightTheIce_Exceptions_ExceptionsInterfaceException()
+    {
+        $this->expectException(\FightTheIce\Exceptions\ExceptionsInterface::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwArithmeticError();
+    }
+
+    public function testAssertionErrorFightTheIce_Exceptions_AssertionErrorException()
+    {
+        $this->expectException(\FightTheIce\Exceptions\AssertionError::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwAssertionError();
+    }
+
+    public function testAssertionErrorAssertionErrorException()
+    {
+        $this->expectException(\AssertionError::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwAssertionError();
+    }
+
+    public function testAssertionErrorErrorException()
+    {
+        $this->expectException(\Error::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwAssertionError();
+    }
+
+    public function testAssertionErrorFightTheIce_Exceptions_ExceptionsInterfaceException()
+    {
+        $this->expectException(\FightTheIce\Exceptions\ExceptionsInterface::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwAssertionError();
+    }
+
+    public function testDivisionByZeroErrorFightTheIce_Exceptions_DivisionByZeroErrorException()
+    {
+        $this->expectException(\FightTheIce\Exceptions\DivisionByZeroError::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwDivisionByZeroError();
+    }
+
+    public function testDivisionByZeroErrorDivisionByZeroErrorException()
+    {
+        $this->expectException(\DivisionByZeroError::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwDivisionByZeroError();
+    }
+
+    public function testDivisionByZeroErrorArithmeticErrorException()
+    {
+        $this->expectException(\ArithmeticError::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwDivisionByZeroError();
+    }
+
+    public function testDivisionByZeroErrorErrorException()
+    {
+        $this->expectException(\Error::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwDivisionByZeroError();
+    }
+
+    public function testDivisionByZeroErrorFightTheIce_Exceptions_ExceptionsInterfaceException()
+    {
+        $this->expectException(\FightTheIce\Exceptions\ExceptionsInterface::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwDivisionByZeroError();
+    }
+
+    public function testCompileErrorFightTheIce_Exceptions_CompileErrorException()
+    {
+        $this->expectException(\FightTheIce\Exceptions\CompileError::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwCompileError();
+    }
+
+    public function testCompileErrorCompileErrorException()
+    {
+        $this->expectException(\CompileError::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwCompileError();
+    }
+
+    public function testCompileErrorErrorException()
+    {
+        $this->expectException(\Error::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwCompileError();
+    }
+
+    public function testCompileErrorFightTheIce_Exceptions_ExceptionsInterfaceException()
+    {
+        $this->expectException(\FightTheIce\Exceptions\ExceptionsInterface::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwCompileError();
+    }
+
+    public function testParseErrorFightTheIce_Exceptions_ParseErrorException()
+    {
+        $this->expectException(\FightTheIce\Exceptions\ParseError::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwParseError();
+    }
+
+    public function testParseErrorParseErrorException()
+    {
+        $this->expectException(\ParseError::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwParseError();
+    }
+
+    public function testParseErrorCompileErrorException()
+    {
+        $this->expectException(\CompileError::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwParseError();
+    }
+
+    public function testParseErrorErrorException()
+    {
+        $this->expectException(\Error::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwParseError();
+    }
+
+    public function testParseErrorFightTheIce_Exceptions_ExceptionsInterfaceException()
+    {
+        $this->expectException(\FightTheIce\Exceptions\ExceptionsInterface::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwParseError();
+    }
+
+    public function testTypeErrorFightTheIce_Exceptions_TypeErrorException()
+    {
+        $this->expectException(\FightTheIce\Exceptions\TypeError::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwTypeError();
+    }
+
+    public function testTypeErrorTypeErrorException()
+    {
+        $this->expectException(\TypeError::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwTypeError();
+    }
+
+    public function testTypeErrorErrorException()
+    {
+        $this->expectException(\Error::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwTypeError();
+    }
+
+    public function testTypeErrorFightTheIce_Exceptions_ExceptionsInterfaceException()
+    {
+        $this->expectException(\FightTheIce\Exceptions\ExceptionsInterface::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwTypeError();
+    }
+
+    public function testFileSystem_FileNotFoundFightTheIce_Exceptions_FileSystem_FileNotFoundException()
+    {
+        $this->expectException(\FightTheIce\Exceptions\FileSystem\FileNotFound::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwFileSystem_FileNotFound();
+    }
+
+    public function testFileSystem_FileNotFoundFightTheIce_Exceptions_ErrorExceptionException()
+    {
+        $this->expectException(\FightTheIce\Exceptions\ErrorException::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwFileSystem_FileNotFound();
+    }
+
+    public function testFileSystem_FileNotFoundErrorExceptionException()
+    {
+        $this->expectException(\ErrorException::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwFileSystem_FileNotFound();
+    }
+
+    public function testFileSystem_FileNotFoundExceptionException()
+    {
+        $this->expectException(\Exception::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwFileSystem_FileNotFound();
+    }
+
+    public function testFileSystem_FileNotFoundFightTheIce_Exceptions_ExceptionsInterfaceException()
+    {
+        $this->expectException(\FightTheIce\Exceptions\ExceptionsInterface::class);
+        $choas = new ZZchoasZZ;
+        $choas->throwFileSystem_FileNotFound();
+    }
+
+
 }

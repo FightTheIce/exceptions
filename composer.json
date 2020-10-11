@@ -4,19 +4,17 @@
   "license": "MIT",
   "authors": [
     {
-      "name": "Alain Schlesser",
-      "email": "alain.schlesser@gmail.com"
+      "name": "William Knauss",
+      "email": "william.knauss@kingdom.com"
     }
   ],
   "require": {
   },
   "require-dev": {
-    "squizlabs/php_codesniffer": "~2.5",
-    "phpunit/phpunit": "^9"
+    "laminas/laminas-code": "^3.4",
+    "phpunit/phpunit": "^9.4"
   },
   "autoload": {
-    "psr-4": {
-      "FightTheIce\\Exceptions\\": "src/"
-    }
+    "classmap": ["src"]
   }
 }

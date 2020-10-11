@@ -1,3 +1,4 @@
 /vendor/
 .phpunit.results.cache
 phpunit.xml.bak
+test.php
