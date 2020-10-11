@@ -9,28 +9,28 @@
  * 1. Catch all exceptions: `\Exception`
  *
  * 2. Catch all exceptions thrown by a Bright Nucleus library:
- * `\BrightNucleus\Exception\ExceptionInterface`
+ * `\FightTheIce\Exceptions\ExceptionInterface`
  *
  * 3. Catch a specific SPL exception (BrightNucleus or not): `\LogicException`
  *
  * 4. Catch a specific SPL exception thrown by a Bright Nucleus library:
- * `\BrightNucleus\Exception\LogicException`
+ * `\FightTheIce\Exceptions\LogicException`
  *
- * @package   BrightNucleus\Exception
+ * @package   FightTheIce\Exceptions
  * @author    Alain Schlesser <alain.schlesser@gmail.com>
- * @license   GPL-2.0+
+ * @license   MIT
  * @link      http://www.brightnucleus.com/
- * @copyright 2015-2016 Alain Schlesser, Bright Nucleus
+ * @copyright 2015-2020 Alain Schlesser, Bright Nucleus
  */
 
-namespace BrightNucleus\Exception;
+namespace FightTheIce\Exceptions;
 
 /**
  * Interface ExceptionInterface.
  *
  * @since   0.1.0
  *
- * @package BrightNucleus\Exception
+ * @package FightTheIce\Exceptions
  * @author  Alain Schlesser <alain.schlesser@gmail.com>
  */
 interface ExceptionInterface

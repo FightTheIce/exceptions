@@ -1,6 +1,6 @@
 {
-  "name": "brightnucleus/exceptions",
-  "description": "Exceptions shared across Bright Nucleus components.",
+  "name": "fighttheice/exceptions",
+  "description": "Exceptions shared across Fight The Ice components.",
   "license": "MIT",
   "authors": [
     {
@@ -16,7 +16,7 @@
   },
   "autoload": {
     "psr-4": {
-      "BrightNucleus\\Exception\\": "src/"
+      "FightTheIce\\Exceptions\\": "src/"
     }
   }
 }

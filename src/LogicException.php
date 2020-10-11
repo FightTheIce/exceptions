@@ -1,20 +1,20 @@
 <?php
 /**
- * Bright Nucleus Core Logic Exception
+ * Fight The Ice Core Logic Exception
  *
  * This exception is thrown to represent an error in the program logic. This
  * kind of exception should lead directly to a fix in your code.
  *
  * @see       http://php.net/manual/class.logicexception.php
  *
- * @package   BrightNucleus\Exception
+ * @package   FightTheIce\Exceptions
  * @author    Alain Schlesser <alain.schlesser@gmail.com>
- * @license   GPL-2.0+
+ * @license   MIT
  * @link      http://www.brightnucleus.com/
- * @copyright 2015-2016 Alain Schlesser, Bright Nucleus
+ * @copyright 2015-2020 Alain Schlesser, Bright Nucleus
  */
 
-namespace BrightNucleus\Exception;
+namespace FightTheIce\Exceptions;
 
 use LogicException as StandardLogicException;
 
@@ -23,7 +23,7 @@ use LogicException as StandardLogicException;
  *
  * @since   0.1.0
  *
- * @package BrightNucleus\Exception
+ * @package FightTheIce\Exceptions
  * @author  Alain Schlesser <alain.schlesser@gmail.com>
  */
 class LogicException extends StandardLogicException implements ExceptionInterface

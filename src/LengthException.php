@@ -1,19 +1,19 @@
 <?php
 /**
- * Bright Nucleus Core Length Exception
+ * Fight The Ice Core Length Exception
  *
  * This exception is thrown if a length is invalid.
  *
  * @see       http://php.net/manual/class.lengthexception.php
  *
- * @package   BrightNucleus\Exception
+ * @package   FightTheIce\Exceptions
  * @author    Alain Schlesser <alain.schlesser@gmail.com>
- * @license   GPL-2.0+
+ * @license   MIT
  * @link      http://www.brightnucleus.com/
- * @copyright 2015-2016 Alain Schlesser, Bright Nucleus
+ * @copyright 2015-2020 Alain Schlesser, Bright Nucleus
  */
 
-namespace BrightNucleus\Exception;
+namespace FightTheIce\Exceptions;
 
 use LengthException as StandardLengthException;
 
@@ -22,7 +22,7 @@ use LengthException as StandardLengthException;
  *
  * @since   0.1.0
  *
- * @package BrightNucleus\Exception
+ * @package FightTheIce\Exceptions
  * @author  Alain Schlesser <alain.schlesser@gmail.com>
  */
 class LengthException extends StandardLengthException implements ExceptionInterface

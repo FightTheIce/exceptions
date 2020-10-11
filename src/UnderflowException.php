@@ -1,20 +1,20 @@
 <?php
 /**
- * Bright Nucleus Core Underflow Exception.
+ * Fight The Ice Core Underflow Exception.
  *
  * This exception is thrown when performing an invalid operation on an empty
  * container, such as removing an element.
  *
  * @see       http://php.net/manual/class.underflowexception.php
  *
- * @package   BrightNucleus\Exception
+ * @package   FightTheIce\Exceptions
  * @author    Alain Schlesser <alain.schlesser@gmail.com>
- * @license   GPL-2.0+
+ * @license   MIT
  * @link      http://www.brightnucleus.com/
- * @copyright 2015-2016 Alain Schlesser, Bright Nucleus
+ * @copyright 2015-2020 Alain Schlesser, Bright Nucleus
  */
 
-namespace BrightNucleus\Exception;
+namespace FightTheIce\Exceptions;
 
 use UnderflowException as StandardUnderflowException;
 
@@ -23,7 +23,7 @@ use UnderflowException as StandardUnderflowException;
  *
  * @since   0.1.0
  *
- * @package BrightNucleus\Exception
+ * @package FightTheIce\Exceptions
  * @author  Alain Schlesser <alain.schlesser@gmail.com>
  */
 class UnderflowException extends StandardUnderflowException implements ExceptionInterface

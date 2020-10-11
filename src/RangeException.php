@@ -1,6 +1,6 @@
 <?php
 /**
- * Bright Nucleus Core Range Exception.
+ * Fight The Ice Core Range Exception.
  *
  * This exception is thrown to indicate range errors during program execution.
  * Normally this means there was an arithmetic error other than under/overflow.
@@ -8,14 +8,14 @@
  *
  * @see       http://php.net/manual/class.rangeexception.php
  *
- * @package   BrightNucleus\Exception
+ * @package   FightTheIce\Exceptions
  * @author    Alain Schlesser <alain.schlesser@gmail.com>
- * @license   GPL-2.0+
+ * @license   MIT
  * @link      http://www.brightnucleus.com/
- * @copyright 2015-2016 Alain Schlesser, Bright Nucleus
+ * @copyright 2015-2020 Alain Schlesser, Bright Nucleus
  */
 
-namespace BrightNucleus\Exception;
+namespace FightTheIce\Exceptions;
 
 use RangeException as StandardRangeException;
 
@@ -24,7 +24,7 @@ use RangeException as StandardRangeException;
  *
  * @since   0.1.0
  *
- * @package BrightNucleus\Exception
+ * @package FightTheIce\Exceptions
  * @author  Alain Schlesser <alain.schlesser@gmail.com>
  */
 class RangeException extends StandardRangeException implements ExceptionInterface

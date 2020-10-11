@@ -1,17 +1,17 @@
 <?php
 /**
- * Bright Nucleus Core Module-specific Exception Trait.
+ * Fight The Ice Core Module-specific Exception Trait.
  *
  * This trait adds module-specific information to the exceptions if available.
  *
- * @package   BrightNucleus\Exception
+ * @package   FightTheIce\Exceptions
  * @author    Alain Schlesser <alain.schlesser@gmail.com>
- * @license   GPL-2.0+
+ * @license   MIT
  * @link      http://www.brightnucleus.com/
- * @copyright 2015-2016 Alain Schlesser, Bright Nucleus
+ * @copyright 2015-2020 Alain Schlesser, Bright Nucleus
  */
 
-namespace BrightNucleus\Exception;
+namespace FightTheIce\Exceptions;
 
 trait ModuleExceptionTrait
 {

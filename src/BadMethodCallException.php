@@ -1,20 +1,20 @@
 <?php
 /**
- * Bright Nucleus Core Bad Method Call Exception.
+ * Fight The Ice Core Bad Method Call Exception.
  *
  * This exception is thrown if a callback refers to an undefined method or if
  * some arguments are missing.
  *
  * @see       http://php.net/manual/class.badmethodcallexception.php
  *
- * @package   BrightNucleus\Exception
+ * @package   FightTheIce\Exceptions
  * @author    Alain Schlesser <alain.schlesser@gmail.com>
- * @license   GPL-2.0+
+ * @license   MIT
  * @link      http://www.brightnucleus.com/
- * @copyright 2015-2016 Alain Schlesser, Bright Nucleus
+ * @copyright 2015-2020 Alain Schlesser, Bright Nucleus
  */
 
-namespace BrightNucleus\Exception;
+namespace FightTheIce\Exceptions;
 
 use BadMethodCallException as StandardBadMethodCallException;
 
@@ -23,7 +23,7 @@ use BadMethodCallException as StandardBadMethodCallException;
  *
  * @since   0.1.0
  *
- * @package BrightNucleus\Exception
+ * @package FightTheIce\Exceptions
  * @author  Alain Schlesser <alain.schlesser@gmail.com>
  */
 class BadMethodCallException extends StandardBadMethodCallException implements ExceptionInterface

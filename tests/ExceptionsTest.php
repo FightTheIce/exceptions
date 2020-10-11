@@ -2,21 +2,21 @@
 /**
  * Exceptions Test
  *
- * @package   BrightNucleus\Exception
+ * @package   FightTheIce\Exceptions
  * @author    Alain Schlesser <alain.schlesser@gmail.com>
  * @license   GPL-2.0+
  * @link      http://www.brightnucleus.com/
  * @copyright 2015-2016 Alain Schlesser, Bright Nucleus
  */
 
-namespace BrightNucleus\Exception;
+namespace FightTheIce\Exceptions;
 
 /**
  * Class ExceptionsTest
  *
  * @since   0.1.0
  *
- * @package BrightNucleus\Exception
+ * @package FightTheIce\Exceptions
  * @author  Alain Schlesser <alain.schlesser@gmail.com>
  */
 class ExceptionsTest extends \PHPUnit_Framework_TestCase
@@ -25,7 +25,7 @@ class ExceptionsTest extends \PHPUnit_Framework_TestCase
     /**
      * Test creation of Exceptions.
      *
-     * @covers       \BrightNucleus\Exception\ModuleExceptionTrait::__construct
+     * @covers       \FightTheIce\Exceptions\ModuleExceptionTrait::__construct
      *
      * @dataProvider exceptionsCreationDataProvider
      *
@@ -51,110 +51,110 @@ class ExceptionsTest extends \PHPUnit_Framework_TestCase
                     try {
                         try {
                             $exception = new $createClass();
-                            /** @var \BrightNucleus\Exception\ExceptionInterface $exception */
+                            /** @var \FightTheIce\Exceptions\ExceptionInterface $exception */
                             $exception->setModule($moduleName);
                             throw $exception;
-                        } catch (\BrightNucleus\Exception\AssertionFailedException $exception) {
-                            $caught[] = '\BrightNucleus\Exception\AssertionFailedException';
+                        } catch (\FightTheIce\Exceptions\AssertionFailedException $exception) {
+                            $caught[] = '\FightTheIce\Exceptions\AssertionFailedException';
                             $this->assertEquals(
                                 $moduleName,
                                 $exception->getModule()
                             );
                             throw $exception;
-                        } catch (\BrightNucleus\Exception\BadFunctionCallException $exception) {
-                            $caught[] = '\BrightNucleus\Exception\BadFunctionCallException';
+                        } catch (\FightTheIce\Exceptions\BadFunctionCallException $exception) {
+                            $caught[] = '\FightTheIce\Exceptions\BadFunctionCallException';
                             $this->assertEquals(
                                 $moduleName,
                                 $exception->getModule()
                             );
                             throw $exception;
-                        } catch (\BrightNucleus\Exception\BadMethodCallException $exception) {
-                            $caught[] = '\BrightNucleus\Exception\BadMethodCallException';
+                        } catch (\FightTheIce\Exceptions\BadMethodCallException $exception) {
+                            $caught[] = '\FightTheIce\Exceptions\BadMethodCallException';
                             $this->assertEquals(
                                 $moduleName,
                                 $exception->getModule()
                             );
                             throw $exception;
-                        } catch (\BrightNucleus\Exception\DomainException $exception) {
-                            $caught[] = '\BrightNucleus\Exception\DomainException';
+                        } catch (\FightTheIce\Exceptions\DomainException $exception) {
+                            $caught[] = '\FightTheIce\Exceptions\DomainException';
                             $this->assertEquals(
                                 $moduleName,
                                 $exception->getModule()
                             );
                             throw $exception;
-                        } catch (\BrightNucleus\Exception\InvalidArgumentException $exception) {
-                            $caught[] = '\BrightNucleus\Exception\InvalidArgumentException';
+                        } catch (\FightTheIce\Exceptions\InvalidArgumentException $exception) {
+                            $caught[] = '\FightTheIce\Exceptions\InvalidArgumentException';
                             $this->assertEquals(
                                 $moduleName,
                                 $exception->getModule()
                             );
                             throw $exception;
-                        } catch (\BrightNucleus\Exception\LengthException $exception) {
-                            $caught[] = '\BrightNucleus\Exception\LengthException';
+                        } catch (\FightTheIce\Exceptions\LengthException $exception) {
+                            $caught[] = '\FightTheIce\Exceptions\LengthException';
                             $this->assertEquals(
                                 $moduleName,
                                 $exception->getModule()
                             );
                             throw $exception;
-                        } catch (\BrightNucleus\Exception\LogicException $exception) {
-                            $caught[] = '\BrightNucleus\Exception\LogicException';
+                        } catch (\FightTheIce\Exceptions\LogicException $exception) {
+                            $caught[] = '\FightTheIce\Exceptions\LogicException';
                             $this->assertEquals(
                                 $moduleName,
                                 $exception->getModule()
                             );
                             throw $exception;
-                        } catch (\BrightNucleus\Exception\OutOfBoundsException $exception) {
-                            $caught[] = '\BrightNucleus\Exception\OutOfBoundsException';
+                        } catch (\FightTheIce\Exceptions\OutOfBoundsException $exception) {
+                            $caught[] = '\FightTheIce\Exceptions\OutOfBoundsException';
                             $this->assertEquals(
                                 $moduleName,
                                 $exception->getModule()
                             );
                             throw $exception;
-                        } catch (\BrightNucleus\Exception\OutOfRangeException $exception) {
-                            $caught[] = '\BrightNucleus\Exception\OutOfRangeException';
+                        } catch (\FightTheIce\Exceptions\OutOfRangeException $exception) {
+                            $caught[] = '\FightTheIce\Exceptions\OutOfRangeException';
                             $this->assertEquals(
                                 $moduleName,
                                 $exception->getModule()
                             );
                             throw $exception;
-                        } catch (\BrightNucleus\Exception\OverflowException $exception) {
-                            $caught[] = '\BrightNucleus\Exception\OverflowException';
+                        } catch (\FightTheIce\Exceptions\OverflowException $exception) {
+                            $caught[] = '\FightTheIce\Exceptions\OverflowException';
                             $this->assertEquals(
                                 $moduleName,
                                 $exception->getModule()
                             );
                             throw $exception;
-                        } catch (\BrightNucleus\Exception\RangeException $exception) {
-                            $caught[] = '\BrightNucleus\Exception\RangeException';
+                        } catch (\FightTheIce\Exceptions\RangeException $exception) {
+                            $caught[] = '\FightTheIce\Exceptions\RangeException';
                             $this->assertEquals(
                                 $moduleName,
                                 $exception->getModule()
                             );
                             throw $exception;
-                        } catch (\BrightNucleus\Exception\RuntimeException $exception) {
-                            $caught[] = '\BrightNucleus\Exception\RuntimeException';
+                        } catch (\FightTheIce\Exceptions\RuntimeException $exception) {
+                            $caught[] = '\FightTheIce\Exceptions\RuntimeException';
                             $this->assertEquals(
                                 $moduleName,
                                 $exception->getModule()
                             );
                             throw $exception;
-                        } catch (\BrightNucleus\Exception\UnderflowException $exception) {
-                            $caught[] = '\BrightNucleus\Exception\UnderflowException';
+                        } catch (\FightTheIce\Exceptions\UnderflowException $exception) {
+                            $caught[] = '\FightTheIce\Exceptions\UnderflowException';
                             $this->assertEquals(
                                 $moduleName,
                                 $exception->getModule()
                             );
                             throw $exception;
-                        } catch (\BrightNucleus\Exception\UnexpectedValueException $exception) {
-                            $caught[] = '\BrightNucleus\Exception\UnexpectedValueException';
+                        } catch (\FightTheIce\Exceptions\UnexpectedValueException $exception) {
+                            $caught[] = '\FightTheIce\Exceptions\UnexpectedValueException';
                             $this->assertEquals(
                                 $moduleName,
                                 $exception->getModule()
                             );
                             throw $exception;
                         }
-                    } catch (\BrightNucleus\Exception\ExceptionInterface $exception) {
-                        $caught[] = '\BrightNucleus\Exception\ExceptionInterface';
+                    } catch (\FightTheIce\Exceptions\ExceptionInterface $exception) {
+                        $caught[] = '\FightTheIce\Exceptions\ExceptionInterface';
                         $this->assertEquals(
                             $moduleName,
                             $exception->getModule()
@@ -268,10 +268,10 @@ class ExceptionsTest extends \PHPUnit_Framework_TestCase
             // string $moduleName, string $createClass, array $expectedToCatch
             [
                 'BadFunctionCallException Test Module',
-                '\BrightNucleus\Exception\BadFunctionCallException',
+                '\FightTheIce\Exceptions\BadFunctionCallException',
                 [
-                    '\BrightNucleus\Exception\BadFunctionCallException',
-                    '\BrightNucleus\Exception\ExceptionInterface',
+                    '\FightTheIce\Exceptions\BadFunctionCallException',
+                    '\FightTheIce\Exceptions\ExceptionInterface',
                     '\BadFunctionCallException',
                     '\LogicException',
                     '\Exception',
@@ -279,10 +279,10 @@ class ExceptionsTest extends \PHPUnit_Framework_TestCase
             ],
             [
                 'BadMethodCallException Test Module',
-                '\BrightNucleus\Exception\BadMethodCallException',
+                '\FightTheIce\Exceptions\BadMethodCallException',
                 [
-                    '\BrightNucleus\Exception\BadMethodCallException',
-                    '\BrightNucleus\Exception\ExceptionInterface',
+                    '\FightTheIce\Exceptions\BadMethodCallException',
+                    '\FightTheIce\Exceptions\ExceptionInterface',
                     '\BadMethodCallException',
                     '\LogicException',
                     '\Exception',
@@ -290,10 +290,10 @@ class ExceptionsTest extends \PHPUnit_Framework_TestCase
             ],
             [
                 'DomainException Test Module',
-                '\BrightNucleus\Exception\DomainException',
+                '\FightTheIce\Exceptions\DomainException',
                 [
-                    '\BrightNucleus\Exception\DomainException',
-                    '\BrightNucleus\Exception\ExceptionInterface',
+                    '\FightTheIce\Exceptions\DomainException',
+                    '\FightTheIce\Exceptions\ExceptionInterface',
                     '\DomainException',
                     '\LogicException',
                     '\Exception',
@@ -301,10 +301,10 @@ class ExceptionsTest extends \PHPUnit_Framework_TestCase
             ],
             [
                 'InvalidArgumentException Test Module',
-                '\BrightNucleus\Exception\InvalidArgumentException',
+                '\FightTheIce\Exceptions\InvalidArgumentException',
                 [
-                    '\BrightNucleus\Exception\InvalidArgumentException',
-                    '\BrightNucleus\Exception\ExceptionInterface',
+                    '\FightTheIce\Exceptions\InvalidArgumentException',
+                    '\FightTheIce\Exceptions\ExceptionInterface',
                     '\InvalidArgumentException',
                     '\LogicException',
                     '\Exception',
@@ -312,10 +312,10 @@ class ExceptionsTest extends \PHPUnit_Framework_TestCase
             ],
             [
                 'LengthException Test Module',
-                '\BrightNucleus\Exception\LengthException',
+                '\FightTheIce\Exceptions\LengthException',
                 [
-                    '\BrightNucleus\Exception\LengthException',
-                    '\BrightNucleus\Exception\ExceptionInterface',
+                    '\FightTheIce\Exceptions\LengthException',
+                    '\FightTheIce\Exceptions\ExceptionInterface',
                     '\LengthException',
                     '\LogicException',
                     '\Exception',
@@ -323,20 +323,20 @@ class ExceptionsTest extends \PHPUnit_Framework_TestCase
             ],
             [
                 'LogicException Test Module',
-                '\BrightNucleus\Exception\LogicException',
+                '\FightTheIce\Exceptions\LogicException',
                 [
-                    '\BrightNucleus\Exception\LogicException',
-                    '\BrightNucleus\Exception\ExceptionInterface',
+                    '\FightTheIce\Exceptions\LogicException',
+                    '\FightTheIce\Exceptions\ExceptionInterface',
                     '\LogicException',
                     '\Exception',
                 ],
             ],
             [
                 'OutOfBoundsException Test Module',
-                '\BrightNucleus\Exception\OutOfBoundsException',
+                '\FightTheIce\Exceptions\OutOfBoundsException',
                 [
-                    '\BrightNucleus\Exception\OutOfBoundsException',
-                    '\BrightNucleus\Exception\ExceptionInterface',
+                    '\FightTheIce\Exceptions\OutOfBoundsException',
+                    '\FightTheIce\Exceptions\ExceptionInterface',
                     '\OutOfBoundsException',
                     '\RuntimeException',
                     '\Exception',
@@ -344,10 +344,10 @@ class ExceptionsTest extends \PHPUnit_Framework_TestCase
             ],
             [
                 'OutOfRangeException Test Module',
-                '\BrightNucleus\Exception\OutOfRangeException',
+                '\FightTheIce\Exceptions\OutOfRangeException',
                 [
-                    '\BrightNucleus\Exception\OutOfRangeException',
-                    '\BrightNucleus\Exception\ExceptionInterface',
+                    '\FightTheIce\Exceptions\OutOfRangeException',
+                    '\FightTheIce\Exceptions\ExceptionInterface',
                     '\OutOfRangeException',
                     '\LogicException',
                     '\Exception',
@@ -355,10 +355,10 @@ class ExceptionsTest extends \PHPUnit_Framework_TestCase
             ],
             [
                 'OverflowException Test Module',
-                '\BrightNucleus\Exception\OverflowException',
+                '\FightTheIce\Exceptions\OverflowException',
                 [
-                    '\BrightNucleus\Exception\OverflowException',
-                    '\BrightNucleus\Exception\ExceptionInterface',
+                    '\FightTheIce\Exceptions\OverflowException',
+                    '\FightTheIce\Exceptions\ExceptionInterface',
                     '\OverflowException',
                     '\RuntimeException',
                     '\Exception',
@@ -366,10 +366,10 @@ class ExceptionsTest extends \PHPUnit_Framework_TestCase
             ],
             [
                 'RangeException Test Module',
-                '\BrightNucleus\Exception\RangeException',
+                '\FightTheIce\Exceptions\RangeException',
                 [
-                    '\BrightNucleus\Exception\RangeException',
-                    '\BrightNucleus\Exception\ExceptionInterface',
+                    '\FightTheIce\Exceptions\RangeException',
+                    '\FightTheIce\Exceptions\ExceptionInterface',
                     '\RangeException',
                     '\RuntimeException',
                     '\Exception',
@@ -377,20 +377,20 @@ class ExceptionsTest extends \PHPUnit_Framework_TestCase
             ],
             [
                 'RuntimeException Test Module',
-                '\BrightNucleus\Exception\RuntimeException',
+                '\FightTheIce\Exceptions\RuntimeException',
                 [
-                    '\BrightNucleus\Exception\RuntimeException',
-                    '\BrightNucleus\Exception\ExceptionInterface',
+                    '\FightTheIce\Exceptions\RuntimeException',
+                    '\FightTheIce\Exceptions\ExceptionInterface',
                     '\RuntimeException',
                     '\Exception',
                 ],
             ],
             [
                 'UnderflowException Test Module',
-                '\BrightNucleus\Exception\UnderflowException',
+                '\FightTheIce\Exceptions\UnderflowException',
                 [
-                    '\BrightNucleus\Exception\UnderflowException',
-                    '\BrightNucleus\Exception\ExceptionInterface',
+                    '\FightTheIce\Exceptions\UnderflowException',
+                    '\FightTheIce\Exceptions\ExceptionInterface',
                     '\UnderflowException',
                     '\RuntimeException',
                     '\Exception',
@@ -398,10 +398,10 @@ class ExceptionsTest extends \PHPUnit_Framework_TestCase
             ],
             [
                 'UnexpectedValueException Test Module',
-                '\BrightNucleus\Exception\UnexpectedValueException',
+                '\FightTheIce\Exceptions\UnexpectedValueException',
                 [
-                    '\BrightNucleus\Exception\UnexpectedValueException',
-                    '\BrightNucleus\Exception\ExceptionInterface',
+                    '\FightTheIce\Exceptions\UnexpectedValueException',
+                    '\FightTheIce\Exceptions\ExceptionInterface',
                     '\UnexpectedValueException',
                     '\RuntimeException',
                     '\Exception',
@@ -413,13 +413,13 @@ class ExceptionsTest extends \PHPUnit_Framework_TestCase
     /**
      * Test setting the module name from a Bright Nucleus exception.
      *
-     * @covers \BrightNucleus\Exception\ModuleExceptionTrait::getModule
-     * @covers \BrightNucleus\Exception\ModuleExceptionTrait::setModule
+     * @covers \FightTheIce\Exceptions\ModuleExceptionTrait::getModule
+     * @covers \FightTheIce\Exceptions\ModuleExceptionTrait::setModule
      */
     public function testSetModule()
     {
         try {
-            $exception = new \BrightNucleus\Exception\RuntimeException(
+            $exception = new \FightTheIce\Exceptions\RuntimeException(
                 '',
                 0,
                 null
@@ -427,7 +427,7 @@ class ExceptionsTest extends \PHPUnit_Framework_TestCase
             $exception->setModule('a_module_name');
             throw $exception;
         } catch (\Exception $exception) {
-            /** @var \BrightNucleus\Exception\ExceptionInterface $exception */
+            /** @var \FightTheIce\Exceptions\ExceptionInterface $exception */
             $this->assertEquals(
                 'a_module_name',
                 $exception->getModule()

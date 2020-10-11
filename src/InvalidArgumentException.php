@@ -1,19 +1,19 @@
 <?php
 /**
- * Bright Nucleus Core Invalid Argument Exception.
+ * Fight The Ice Core Invalid Argument Exception.
  *
  * This exception is thrown if an argument is not of the expected type.
  *
  * @see       http://php.net/manual/class.invalidargumentexception.php
  *
- * @package   BrightNucleus\Exception
+ * @package   FightTheIce\Exceptions
  * @author    Alain Schlesser <alain.schlesser@gmail.com>
- * @license   GPL-2.0+
+ * @license   MIT
  * @link      http://www.brightnucleus.com/
- * @copyright 2015-2016 Alain Schlesser, Bright Nucleus
+ * @copyright 2015-2020 Alain Schlesser, Bright Nucleus
  */
 
-namespace BrightNucleus\Exception;
+namespace FightTheIce\Exceptions;
 
 use InvalidArgumentException as StandardInvalidArgumentException;
 
@@ -22,7 +22,7 @@ use InvalidArgumentException as StandardInvalidArgumentException;
  *
  * @since   0.1.0
  *
- * @package BrightNucleus\Exception
+ * @package FightTheIce\Exceptions
  * @author  Alain Schlesser <alain.schlesser@gmail.com>
  */
 class InvalidArgumentException extends StandardInvalidArgumentException implements ExceptionInterface {

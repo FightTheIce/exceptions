@@ -1,20 +1,20 @@
 <?php
 /**
- * Bright Nucleus Core BadFunctionCall Exception.
+ * Fight The Ice Core BadFunctionCall Exception.
  *
  * This exception is thrown if a callback refers to an undefined function or if
  * some arguments are missing.
  *
  * @see       http://php.net/manual/class.badfunctioncallexception.php
  *
- * @package   BrightNucleus\Exception
+ * @package   FightTheIce\Exceptions
  * @author    Alain Schlesser <alain.schlesser@gmail.com>
- * @license   GPL-2.0+
+ * @license   MIT
  * @link      http://www.brightnucleus.com/
- * @copyright 2015-2016 Alain Schlesser, Bright Nucleus
+ * @copyright 2015-2020 Alain Schlesser, Bright Nucleus
  */
 
-namespace BrightNucleus\Exception;
+namespace FightTheIce\Exceptions;
 
 use BadFunctionCallException as StandardBadFunctionCallException;
 
@@ -23,7 +23,7 @@ use BadFunctionCallException as StandardBadFunctionCallException;
  *
  * @since   0.1.0
  *
- * @package BrightNucleus\Exception
+ * @package FightTheIce\Exceptions
  * @author  Alain Schlesser <alain.schlesser@gmail.com>
  */
 class BadFunctionCallException extends StandardBadFunctionCallException implements ExceptionInterface

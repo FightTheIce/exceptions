@@ -1,6 +1,6 @@
 <?php
 /**
- * Bright Nucleus Core Unexpected Value Exception.
+ * Fight The Ice Core Unexpected Value Exception.
  *
  * This exception is thrown if a value does not match with a set of values.
  * Typically this happens when a function calls another function and expects
@@ -9,14 +9,14 @@
  *
  * @see       http://php.net/manual/class.unexpectedvalueexception.php
  *
- * @package   BrightNucleus\Exception
+ * @package   FightTheIce\Exceptions
  * @author    Alain Schlesser <alain.schlesser@gmail.com>
- * @license   GPL-2.0+
+ * @license   MIT
  * @link      http://www.brightnucleus.com/
- * @copyright 2015-2016 Alain Schlesser, Bright Nucleus
+ * @copyright 2015-2020 Alain Schlesser, Bright Nucleus
  */
 
-namespace BrightNucleus\Exception;
+namespace FightTheIce\Exceptions;
 
 use UnexpectedValueException as StandardUnexpectedValueException;
 
@@ -25,7 +25,7 @@ use UnexpectedValueException as StandardUnexpectedValueException;
  *
  * @since   0.1.0
  *
- * @package BrightNucleus\Exception
+ * @package FightTheIce\Exceptions
  * @author  Alain Schlesser <alain.schlesser@gmail.com>
  */
 class UnexpectedValueException extends StandardUnexpectedValueException implements ExceptionInterface
