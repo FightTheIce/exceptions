@@ -14,7 +14,7 @@ $ composer require fighttheice/exceptions
 
 There are actually two steps to follow when trying to use the features of this library.
 
-[1] - Create your own exception classes by extending any of the FightTheIce\Exceptions\{class}
+[1] - Create your own exception classes by extending any of the FightTheIce\Exceptions\\{class}
 
 ```php
 
@@ -34,6 +34,8 @@ try {
 	//catch FTI exception
 } catch (\ErrorException $e) {
 	//catch SPL exception
+} catch (\FightTheIce\Exceptions\ExceptionsInterface $e) {
+	//catch all FTI exceptions
 } catch (\Exception $e) {
 	//catch Generic exception
 }
