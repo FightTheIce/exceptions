@@ -2,3 +2,4 @@
 .phpunit.results.cache
 phpunit.xml.bak
 test.php
+.phpunit.result.cache
