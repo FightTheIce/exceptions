@@ -1,5 +1,5 @@
 <?php
-exit;
+//exit;
 
 include 'vendor/autoload.php';
 
@@ -126,155 +126,23 @@ $standardclasses = array(
 );
 
 ######END OF MODIFIABLE CONTENT#######END OF MODIFIABLE CONTENT#######END OF MODIFIABLE CONTENT#######END OF MODIFIABLE CONTENT#
-
-$keepTrackOfClasses = array();
-$vowels             = array('A', 'E', 'I', 'O', 'U');
 //does the src folder exists?
 if (!file_exists('src')) {
     mkdir('src');
 }
 
-$ourPaths = array();
-
-foreach ($standardclasses as $name => $data) {
-    $x                    = explode('\\', $name);
-    $className            = end($x);
-    $keepTrackOfClasses[] = $className;
-    $extendedName         = 'Base';
-    if (count($x) > 1) {
-        $file = end($x);
-        unset($x[count($x) - 1]);
-
-        $basePath = 'src';
-        foreach ($x as $folder) {
-            $basePath = $basePath . DIRECTORY_SEPARATOR . $folder;
-            if (!file_exists($basePath)) {
-                mkdir($basePath);
-            }
-        }
-
-        $extendedName = $x[0];
-    }
-
-    $class = new Laminas\Code\Generator\ClassGenerator(
-        $className, // name
-        $namespace, // namespace
-        null, // flags
-        $extendedName . $className, // extends
-        array(), // interfaces
-        array(), // properties
-    );
-
-    $class->addUse($className, $extendedName . $className);
-    $class->addUse($namespace . '\\ExceptionsInterface');
-    $class->addTrait('ComponentExceptionTrait');
-    $class->setImplementedInterfaces(array($namespace . '\\ExceptionsInterface'));
-
-    //setup our comment
-    $classcomment = $comment;
-    $classcomment = str_replace('{exception}', $className, $classcomment);
-    $classcomment = str_replace('{desc}', $data['desc'], $classcomment);
-    $classcomment = str_replace('{url}', $data['url'], $classcomment);
-
-    $contents = $class->generate();
-    $contents = '<?php' . PHP_EOL . $classcomment . PHP_EOL . $contents;
-    $contents = str_replace('use ' . $namespace . '\\ExceptionsInterface;' . PHP_EOL, '', $contents);
-
-    $path = 'src' . DIRECTORY_SEPARATOR . str_replace('\\', DIRECTORY_SEPARATOR, $name) . '.php';
-
-    file_put_contents($path, $contents);
-    //include $path;
-    $ourPaths[] = $path;
-}
-
-if (isset($customClasses)) {
-    foreach ($customClasses as $name => $data) {
-        $x         = explode('\\', $name);
-        $className = end($x);
-        if (count($x) > 1) {
-            $file = end($x);
-            unset($x[count($x) - 1]);
-
-            $basePath = 'src';
-            foreach ($x as $path) {
-                $basePath = $basePath . DIRECTORY_SEPARATOR . $path;
-                if (!file_exists($basePath)) {
-                    mkdir($basePath);
-                }
-            }
-        }
-
-        $realClassName = $namespace . '\\' . $name;
-        $extends       = null;
-        if (isset($data['extends'])) {
-            $extends = $namespace . '\\' . str_replace($namespace . '\\', '', $data['extends']);
-        }
-
-        $class = new Laminas\Code\Generator\ClassGenerator(
-            $realClassName, // name
-            null, // namespace
-            null, // flags
-            $extends, // extends
-            array(), // interfaces
-            array(), // properties
-        );
-        $class->addUse($namespace . '\\' . $data['extends']);
-
-        $contents             = '<?php' . PHP_EOL . PHP_EOL . $class->generate();
-        $keepTrackOfClasses[] = $name;
-
-        $path = 'src' . DIRECTORY_SEPARATOR . str_replace('\\', DIRECTORY_SEPARATOR, $name) . '.php';
-
-        file_put_contents($path, $contents);
-        //include $path;
-        $ourPaths[] = $path;
-    }
-}
-
-//do we have a tests folder?
+//does the tests folder exists?
 if (!file_exists('tests')) {
     mkdir('tests');
 }
 
-$class = new Laminas\Code\Generator\ClassGenerator(
-    'ZZchoasZZ', // name
-    null, // namespace
-    null, // flags
-    null, // extends
-    array(), // interfaces
-    array(), // properties
-);
+//paths
+$paths = array();
 
-foreach ($keepTrackOfClasses as $cName) {
-    $method = new Laminas\Code\Generator\MethodGenerator('throw' . str_replace('\\', '_', $cName));
-    $blah   = 'EXCEPTION: [' . $cName . ']';
-    $body   = 'throw new \\' . $namespace . '\\' . $cName . '(\'' . $blah . '\');';
-    $method->setBody($body);
+//classes
+$classes = array();
 
-    $class->addMethodFromGenerator($method);
-}
-
-$contents = '<?php' . PHP_EOL . PHP_EOL . $class->generate();
-file_put_contents('tests/ZZchoasZZ.php', $contents);
-
-$trait = new Laminas\Code\Generator\TraitGenerator(
-    'ComponentExceptionTrait', // name
-    $namespace, // namespace
-    null, // flags
-    null, // extends
-    array(), // interfaces
-    array(), // properties
-);
-//ddProperty($name, $defaultValue = null, $flags = PropertyGenerator::FLAG_PUBLIC)
-$trait->addProperty('component', 'UNKNOWN', Laminas\Code\Generator\PropertyGenerator::FLAG_PROTECTED);
-
-$method = new Laminas\Code\Generator\MethodGenerator('getComponent');
-$method->setBody('return $this->component;');
-
-$trait->addMethodFromGenerator($method);
-
-file_put_contents('src/ComponentExceptionTrait.php', '<?php' . PHP_EOL . PHP_EOL . $trait->generate());
-
+//interface
 $interface = new Laminas\Code\Generator\InterfaceGenerator(
     'ExceptionsInterface', // name
     $namespace, // namespace
@@ -285,55 +153,131 @@ $interface = new Laminas\Code\Generator\InterfaceGenerator(
 );
 $method = new Laminas\Code\Generator\MethodGenerator('getComponent');
 $interface->addMethodFromGenerator($method);
+$path    = 'src' . DIRECTORY_SEPARATOR . 'ExceptionsInterface.php';
+$paths[] = $path;
+file_put_contents($path, '<?php' . PHP_EOL . PHP_EOL . $interface->generate());
 
-file_put_contents('src/ExceptionsInterface.php', '<?php' . PHP_EOL . PHP_EOL . $interface->generate());
-
-foreach ($ourPaths as $path) {
-    //include 'src/ComponentExceptionTrait.php';
-    //include 'src/ExceptionsInterface.php';
-    include $path;
-}
-
-$test = new Laminas\Code\Generator\ClassGenerator(
-    'ExceptionsTest', // name
-    null, // namespace
+//trait
+$trait = new Laminas\Code\Generator\TraitGenerator(
+    'ComponentExceptionTrait', // name
+    $namespace, // namespace
     null, // flags
-    'PHPUnit\Framework\TestCase', // extends
+    null, // extends
     array(), // interfaces
     array(), // properties
 );
+$trait->addProperty('component', 'UNKNOWN', Laminas\Code\Generator\PropertyGenerator::FLAG_PROTECTED);
 
-foreach ($keepTrackOfClasses as $cName) {
-    $class = $namespace . '\\' . $cName;
-    $obj   = new $class('error');
-    $links = getlinks($obj);
-    foreach ($links as $link) {
-        $methodName = 'test_' . str_replace('\\', '_', $cName) . '_' . str_replace('\\', '_', $link);
-        //$methodName = 'test_'.str_replace('\\','_',$cName).'_'.
-        $method = new Laminas\Code\Generator\MethodGenerator($methodName);
-        $body   = '$this->expectException(\\' . $link . '::class);' . PHP_EOL;
-        $body   = $body . PHP_EOL . '$choas = new ZZchoasZZ;';
-        $body   = $body . PHP_EOL . '$choas->throw' . str_replace('\\', '_', $cName) . '();';
-        $body   = $body . PHP_EOL . '/*' . PHP_EOL . $class . PHP_EOL . print_r($links, true) . '*/';
-        /*
-        FightTheIce\Exceptions\BadFunctionCallException
-        Array
-        (
-        [0] => FightTheIce\Exceptions\BadFunctionCallException
-        [1] => BadFunctionCallException
-        [2] => LogicException
-        [3] => Exception
-        [4] => FightTheIce\Exceptions\ExceptionsInterface
-        )
+$method = new Laminas\Code\Generator\MethodGenerator('getComponent');
+$method->setBody('return $this->component;');
 
-         */
-        $method->setBody($body);
+$trait->addMethodFromGenerator($method);
+$path    = 'src' . DIRECTORY_SEPARATOR . 'ComponentExceptionTrait.php';
+$paths[] = $path;
+file_put_contents($path, '<?php' . PHP_EOL . PHP_EOL . $trait->generate());
 
-        $test->addMethodFromGenerator($method);
+//standard classes
+foreach ($standardclasses as $name => $data) {
+    $x         = explode('\\', $name);
+    $classname = end($x);
+    $first     = $x[0];
+    if ($classname == $first) {
+        $first = 'Base';
     }
+
+    if (count($x) > 1) {
+        array_pop($x);
+
+        $basePath = 'src';
+        foreach ($x as $segment) {
+            $basePath = $basePath . DIRECTORY_SEPARATOR . $segment;
+
+            //does this path exists?
+            if (!file_exists($basePath)) {
+                mkdir($basePath);
+            }
+        }
+    }
+
+    $class = new Laminas\Code\Generator\ClassGenerator(
+        $classname, // name
+        $namespace, // namespace
+        null, // flags
+        trim($first . $classname), // extends
+        array(), // interfaces
+        array(), // properties
+    );
+
+    $class->addUse($classname, trim($first . $classname));
+    $class->addUse($namespace . '\\ExceptionsInterface');
+    $class->addTrait('ComponentExceptionTrait');
+    $class->setImplementedInterfaces(array($namespace . '\\ExceptionsInterface'));
+
+    $content = '<?php' . PHP_EOL . $comment;
+    $content = str_replace('{exception}', $classname, $content);
+    $content = str_replace('{desc}', $data['desc'], $content);
+    $content = str_replace('{url}', $data['url'], $content);
+
+    $generate = $class->generate();
+    $generate = str_replace('use ' . $namespace . '\\ExceptionsInterface;' . PHP_EOL, '', $generate);
+
+    $content = $content . PHP_EOL . $generate;
+    $path    = 'src' . DIRECTORY_SEPARATOR . str_replace('\\', DIRECTORY_SEPARATOR, $name) . '.php';
+
+    $paths[]   = $path;
+    $classes[] = $namespace . '\\' . $classname;
+
+    file_put_contents($path, $content);
 }
 
-file_put_contents('tests/ExceptionsTest.php', '<?php' . PHP_EOL . PHP_EOL . $test->generate());
+foreach ($paths as $path) {
+    include $path;
+}
+
+$x     = explode('\\', $namespace);
+$tname = $x[0] . '\\Tests';
+unset($x[0]);
+$tname = $tname . '\\' . implode('\\', $x);
+
+foreach ($classes as $cObjName) {
+    //echo $cObjName . PHP_EOL;
+    $x    = explode('\\', $cObjName);
+    $name = end($x);
+
+    $class = new Laminas\Code\Generator\ClassGenerator(
+        $name . 'Test', // name
+        $tname, // namespace
+        null, // flags
+        'PHPUnit\Framework\TestCase', // extends
+        array(), // interfaces
+        array(), // properties
+    );
+
+    $obj   = new $cObjName('message', 1);
+    $links = getLinks($obj);
+
+    foreach ($links as $link) {
+        $method = new Laminas\Code\Generator\MethodGenerator('test_' . $name . '_' . str_replace('\\', '_', $link));
+        $method->setBody('$this->expectException(\\' . $link . '::class);' . PHP_EOL . 'throw new \\' . $cObjName . '("' . $link . '->Exception");');
+
+        $class->addMethodFromGenerator($method);
+    }
+
+    $method = new Laminas\Code\Generator\MethodGenerator('test_' . $name . '_getComponent');
+    $body   = '$exception = new \\' . $cObjName . ';' . PHP_EOL;
+    $body   = $body . '$component = $exception->getComponent();' . PHP_EOL;
+    $body   = $body . '$this->assertIsString($component);' . PHP_EOL;
+    $body   = $body . '$this->assertEquals($component, \'UNKNOWN\');' . PHP_EOL;
+    $method->setBody($body);
+    $class->addMethodFromGenerator($method);
+
+    $method = new Laminas\Code\Generator\MethodGenerator('test_' . $name . '_BaseException');
+    $body   = "\$this->expectException(\\" . $cObjName . "::class,'Custom Message',1);";
+    $body   = $body . PHP_EOL . "throw new \\" . $cObjName . "('Custom Message',1);";
+    $method->setBody($body);
+    $class->addMethodFromGenerator($method);
+    file_put_contents('tests' . DIRECTORY_SEPARATOR . $name . 'Test.php', '<?php' . PHP_EOL . '/*' . PHP_EOL . print_r($links, true) . '*/' . PHP_EOL . $class->generate());
+}
 
 function getlinks($class) {
     $children   = array();
