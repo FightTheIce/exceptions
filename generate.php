@@ -1,5 +1,5 @@
 <?php
-exit;
+//exit;
 
 include 'vendor/autoload.php';
 
@@ -19,8 +19,11 @@ $comment =
 ';
 
 $customClasses = array(
-    'FileSystem\FileNotFound' => array(
+    'FileSystem\FileNotFoundException'         => array(
         'extends' => 'ErrorException',
+    ),
+    'Programming\ConstructAlreadyRunException' => array(
+        'extends' => 'BadMethodCallException',
     ),
 );
 
@@ -131,6 +134,8 @@ if (!file_exists('src')) {
     mkdir('src');
 }
 
+$ourPaths = array();
+
 foreach ($standardclasses as $name => $data) {
     $x                    = explode('\\', $name);
     $className            = end($x);
@@ -178,7 +183,8 @@ foreach ($standardclasses as $name => $data) {
     $path = 'src' . DIRECTORY_SEPARATOR . str_replace('\\', DIRECTORY_SEPARATOR, $name) . '.php';
 
     file_put_contents($path, $contents);
-    include $path;
+    //include $path;
+    $ourPaths[] = $path;
 }
 
 if (isset($customClasses)) {
@@ -220,7 +226,8 @@ if (isset($customClasses)) {
         $path = 'src' . DIRECTORY_SEPARATOR . str_replace('\\', DIRECTORY_SEPARATOR, $name) . '.php';
 
         file_put_contents($path, $contents);
-        include $path;
+        //include $path;
+        $ourPaths[] = $path;
     }
 }
 
@@ -281,6 +288,12 @@ $interface->addMethodFromGenerator($method);
 
 file_put_contents('src/ExceptionsInterface.php', '<?php' . PHP_EOL . PHP_EOL . $interface->generate());
 
+foreach ($ourPaths as $path) {
+    //include 'src/ComponentExceptionTrait.php';
+    //include 'src/ExceptionsInterface.php';
+    include $path;
+}
+
 $test = new Laminas\Code\Generator\ClassGenerator(
     'ExceptionsTest', // name
     null, // namespace
@@ -295,13 +308,24 @@ foreach ($keepTrackOfClasses as $cName) {
     $obj   = new $class('error');
     $links = getlinks($obj);
     foreach ($links as $link) {
-        $methodName = 'test' . str_replace('\\', '_', $cName) . str_replace('\\', '_', $link) . 'Exception';
-        $method     = new Laminas\Code\Generator\MethodGenerator($methodName);
-        $body       = '$this->expectException(\\' . $link . '::class);';
-        $body       = $body . PHP_EOL . '$choas = new ZZchoasZZ;';
-        $body       = $body . PHP_EOL . '$choas->throw' . str_replace('\\', '_', $cName) . '();';
+        $methodName = 'test_' . str_replace('\\', '_', $cName) . '_' . str_replace('\\', '_', $link);
+        //$methodName = 'test_'.str_replace('\\','_',$cName).'_'.
+        $method = new Laminas\Code\Generator\MethodGenerator($methodName);
+        $body   = '$this->expectException(\\' . $link . '::class);' . PHP_EOL;
+        $body   = $body . PHP_EOL . '$choas = new ZZchoasZZ;';
+        $body   = $body . PHP_EOL . '$choas->throw' . str_replace('\\', '_', $cName) . '();';
+        $body   = $body . PHP_EOL . '/*' . PHP_EOL . $class . PHP_EOL . print_r($links, true) . '*/';
         /*
-        $choas->throwFileSystem_FileNotFound();
+        FightTheIce\Exceptions\BadFunctionCallException
+        Array
+        (
+        [0] => FightTheIce\Exceptions\BadFunctionCallException
+        [1] => BadFunctionCallException
+        [2] => LogicException
+        [3] => Exception
+        [4] => FightTheIce\Exceptions\ExceptionsInterface
+        )
+
          */
         $method->setBody($body);
 

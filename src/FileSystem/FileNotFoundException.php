@@ -4,7 +4,7 @@ namespace FightTheIce\Exceptions\FileSystem;
 
 use FightTheIce\Exceptions\ErrorException;
 
-class FileNotFound extends ErrorException
+class FileNotFoundException extends ErrorException
 {
 
 

@@ -118,9 +118,14 @@ class ZZchoasZZ
         throw new \FightTheIce\Exceptions\TypeError('EXCEPTION: [TypeError]');
     }
 
-    public function throwFileSystem_FileNotFound()
+    public function throwFileSystem_FileNotFoundException()
     {
-        throw new \FightTheIce\Exceptions\FileSystem\FileNotFound('EXCEPTION: [FileSystem\FileNotFound]');
+        throw new \FightTheIce\Exceptions\FileSystem\FileNotFoundException('EXCEPTION: [FileSystem\FileNotFoundException]');
+    }
+
+    public function throwProgramming_ConstructAlreadyRunException()
+    {
+        throw new \FightTheIce\Exceptions\Programming\ConstructAlreadyRunException('EXCEPTION: [Programming\ConstructAlreadyRunException]');
     }
 
 

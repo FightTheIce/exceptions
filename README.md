@@ -18,7 +18,7 @@ There are actually two steps to follow when trying to use the features of this l
 
 ```php
 
-class YourAwesomeException extends \FightTheIce\Exceptions\ErrorException {
+class YourAwesomeException extends \FightTheIce\Exceptions\DomainException {
 	protected $component = 'Your component name';
 }
 ```
@@ -30,9 +30,9 @@ try {
 	$obj->someMethod();
 } catch (YourAweomseException $e) {
 	//Catch your specific execption
-} catch (\FightTheIce\Exceptions\ErrorException $e) {
-	//catch FTI exception
-} catch (\ErrorException $e) {
+} catch (\FightTheIce\Exceptions\DomainException $e) {
+	//catch FTI specific exception
+} catch (\DomainException $e) {
 	//catch SPL exception
 } catch (\FightTheIce\Exceptions\ExceptionsInterface $e) {
 	//catch all FTI exceptions
