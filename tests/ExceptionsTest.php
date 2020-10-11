@@ -19,8 +19,7 @@ namespace FightTheIce\Exceptions;
  * @package FightTheIce\Exceptions
  * @author  Alain Schlesser <alain.schlesser@gmail.com>
  */
-class ExceptionsTest extends \PHPUnit_Framework_TestCase
-{
+class ExceptionsTest extends \PHPUnit\Framework\TestCase {
 
     /**
      * Test creation of Exceptions.
@@ -36,8 +35,7 @@ class ExceptionsTest extends \PHPUnit_Framework_TestCase
      * @param string $createClass       Exception class to create.
      * @param array  $expectedToCatch   Array of exceptions that were caught.
      */
-    public function testExceptionsCreation($moduleName, $createClass, $expectedToCatch)
-    {
+    public function testExceptionsCreation($moduleName, $createClass, $expectedToCatch) {
 
         // What follows is a horrible nesting structure that tries to catch
         // exceptions at all levels and builds an array with the names of the
@@ -262,8 +260,7 @@ class ExceptionsTest extends \PHPUnit_Framework_TestCase
      *
      * @return array
      */
-    public function exceptionsCreationDataProvider()
-    {
+    public function exceptionsCreationDataProvider() {
         return [
             // string $moduleName, string $createClass, array $expectedToCatch
             [
@@ -416,8 +413,7 @@ class ExceptionsTest extends \PHPUnit_Framework_TestCase
      * @covers \FightTheIce\Exceptions\ModuleExceptionTrait::getModule
      * @covers \FightTheIce\Exceptions\ModuleExceptionTrait::setModule
      */
-    public function testSetModule()
-    {
+    public function testSetModule() {
         try {
             $exception = new \FightTheIce\Exceptions\RuntimeException(
                 '',
