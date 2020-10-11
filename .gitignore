@@ -3,3 +3,6 @@
 phpunit.xml.bak
 test.php
 .phpunit.result.cache
+/html/
+php.save
+.DS_Store
