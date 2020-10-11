@@ -30,7 +30,7 @@ try {
 	$obj->someMethod();
 } catch (YourAweomseException $e) {
 	//Catch your specific execption
-} catch (\FightTheIce\Exceptions\ErrorExcetion $e) {
+} catch (\FightTheIce\Exceptions\ErrorException $e) {
 	//catch FTI exception
 } catch (\ErrorException $e) {
 	//catch SPL exception
@@ -38,6 +38,17 @@ try {
 	//catch Generic exception
 }
 ```
+
+## Building
+
+Exceptions, hierarchy, and linking gets messy. A file is included with the repository called "generate.php"
+
+You will need to remove the "exit;" from the second line of the file. (Yes this was intentionally put there).
+
+Change $namespace, to your name and run the generate command in a terminal window. 
+
+All of your exceptions, and test suite will be automaticly generated for you.
+
 
 ## Contributing
 
