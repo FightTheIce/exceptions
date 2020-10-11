@@ -1,10 +1,21 @@
 # Fight The Ice Core Exceptions Component
 
-Set of exceptions shared across Fight The Ice components. This lets you catch library-specific exceptions (if needed).
+Set of exceptions shared across Fight The Ice components. 
 
-This repository isn't really of value to use in your projects. You may however want to fork/clone this repository to build your own exception classes.
+This lets you catch library-specific exceptions (if needed).
+
+This repository isn't really of value to use in your projects. 
+
+You may however want to fork/clone this repository to build your own exception classes.
 
 Most of the documentation included here is just for personal reference.
+
+# READ THESE
+Please take a moment to read these articles.
+
+https://www.alainschlesser.com/structuring-php-exceptions/
+
+https://www.nikolaposa.in.rs/blog/2016/08/17/exceptional-behavior-best-practices/
 
 
 ## Installation
