@@ -14,7 +14,7 @@ namespace FightTheIce\Exceptions;
 
 use UnderflowException as SPLUnderflowException;
 
-abstract class UnderflowException extends SPLUnderflowException implements ExceptionsInterface
+class UnderflowException extends SPLUnderflowException implements ExceptionsInterface
 {
 
     use ComponentExceptionTrait;

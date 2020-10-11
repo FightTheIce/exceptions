@@ -14,7 +14,7 @@ namespace FightTheIce\Exceptions;
 
 use RuntimeException as SPLRuntimeException;
 
-abstract class RuntimeException extends SPLRuntimeException implements ExceptionsInterface
+class RuntimeException extends SPLRuntimeException implements ExceptionsInterface
 {
 
     use ComponentExceptionTrait;

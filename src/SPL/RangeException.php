@@ -14,7 +14,7 @@ namespace FightTheIce\Exceptions;
 
 use RangeException as SPLRangeException;
 
-abstract class RangeException extends SPLRangeException implements ExceptionsInterface
+class RangeException extends SPLRangeException implements ExceptionsInterface
 {
 
     use ComponentExceptionTrait;

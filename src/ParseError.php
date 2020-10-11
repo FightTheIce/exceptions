@@ -14,7 +14,7 @@ namespace FightTheIce\Exceptions;
 
 use ParseError as BaseParseError;
 
-abstract class ParseError extends BaseParseError implements ExceptionsInterface
+class ParseError extends BaseParseError implements ExceptionsInterface
 {
 
     use ComponentExceptionTrait;

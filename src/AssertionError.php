@@ -14,7 +14,7 @@ namespace FightTheIce\Exceptions;
 
 use AssertionError as BaseAssertionError;
 
-abstract class AssertionError extends BaseAssertionError implements ExceptionsInterface
+class AssertionError extends BaseAssertionError implements ExceptionsInterface
 {
 
     use ComponentExceptionTrait;

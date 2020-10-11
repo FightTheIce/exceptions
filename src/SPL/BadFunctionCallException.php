@@ -14,7 +14,7 @@ namespace FightTheIce\Exceptions;
 
 use BadFunctionCallException as SPLBadFunctionCallException;
 
-abstract class BadFunctionCallException extends SPLBadFunctionCallException implements ExceptionsInterface
+class BadFunctionCallException extends SPLBadFunctionCallException implements ExceptionsInterface
 {
 
     use ComponentExceptionTrait;

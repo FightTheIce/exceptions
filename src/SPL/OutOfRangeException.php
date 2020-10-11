@@ -14,7 +14,7 @@ namespace FightTheIce\Exceptions;
 
 use OutOfRangeException as SPLOutOfRangeException;
 
-abstract class OutOfRangeException extends SPLOutOfRangeException implements ExceptionsInterface
+class OutOfRangeException extends SPLOutOfRangeException implements ExceptionsInterface
 {
 
     use ComponentExceptionTrait;

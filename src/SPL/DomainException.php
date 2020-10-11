@@ -14,7 +14,7 @@ namespace FightTheIce\Exceptions;
 
 use DomainException as SPLDomainException;
 
-abstract class DomainException extends SPLDomainException implements ExceptionsInterface
+class DomainException extends SPLDomainException implements ExceptionsInterface
 {
 
     use ComponentExceptionTrait;

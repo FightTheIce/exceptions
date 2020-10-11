@@ -159,7 +159,7 @@ foreach ($standardclasses as $name => $data) {
     $class = new Laminas\Code\Generator\ClassGenerator(
         $className, // name
         $namespace, // namespace
-        Laminas\Code\Generator\ClassGenerator::FLAG_ABSTRACT, // flags
+        null, // flags
         $extendedName . $className, // extends
         array(), // interfaces
         array(), // properties

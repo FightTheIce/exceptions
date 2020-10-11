@@ -14,7 +14,7 @@ namespace FightTheIce\Exceptions;
 
 use ArgumentCountError as BaseArgumentCountError;
 
-abstract class ArgumentCountError extends BaseArgumentCountError implements ExceptionsInterface
+class ArgumentCountError extends BaseArgumentCountError implements ExceptionsInterface
 {
 
     use ComponentExceptionTrait;

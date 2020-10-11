@@ -14,7 +14,7 @@ namespace FightTheIce\Exceptions;
 
 use OverflowException as SPLOverflowException;
 
-abstract class OverflowException extends SPLOverflowException implements ExceptionsInterface
+class OverflowException extends SPLOverflowException implements ExceptionsInterface
 {
 
     use ComponentExceptionTrait;

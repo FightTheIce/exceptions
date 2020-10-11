@@ -14,7 +14,7 @@ namespace FightTheIce\Exceptions;
 
 use UnexpectedValueException as SPLUnexpectedValueException;
 
-abstract class UnexpectedValueException extends SPLUnexpectedValueException implements ExceptionsInterface
+class UnexpectedValueException extends SPLUnexpectedValueException implements ExceptionsInterface
 {
 
     use ComponentExceptionTrait;

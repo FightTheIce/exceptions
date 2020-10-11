@@ -14,7 +14,7 @@ namespace FightTheIce\Exceptions;
 
 use BadMethodCallException as SPLBadMethodCallException;
 
-abstract class BadMethodCallException extends SPLBadMethodCallException implements ExceptionsInterface
+class BadMethodCallException extends SPLBadMethodCallException implements ExceptionsInterface
 {
 
     use ComponentExceptionTrait;

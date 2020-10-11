@@ -14,7 +14,7 @@ namespace FightTheIce\Exceptions;
 
 use ArithmeticError as BaseArithmeticError;
 
-abstract class ArithmeticError extends BaseArithmeticError implements ExceptionsInterface
+class ArithmeticError extends BaseArithmeticError implements ExceptionsInterface
 {
 
     use ComponentExceptionTrait;
