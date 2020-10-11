@@ -230,6 +230,51 @@ foreach ($standardclasses as $name => $data) {
     file_put_contents($path, $content);
 }
 
+//custom classes
+if (isset($customClasses)) {
+    foreach ($customClasses as $name => $data) {
+        $x         = explode('\\', $name);
+        $className = end($x);
+        if (count($x) > 1) {
+            $file = end($x);
+            unset($x[count($x) - 1]);
+
+            $basePath = 'src';
+            foreach ($x as $path) {
+                $basePath = $basePath . DIRECTORY_SEPARATOR . $path;
+                if (!file_exists($basePath)) {
+                    mkdir($basePath);
+                }
+            }
+        }
+
+        $realClassName = $namespace . '\\' . $name;
+        $extends       = null;
+        if (isset($data['extends'])) {
+            $extends = $namespace . '\\' . str_replace($namespace . '\\', '', $data['extends']);
+        }
+
+        $class = new Laminas\Code\Generator\ClassGenerator(
+            $realClassName, // name
+            null, // namespace
+            null, // flags
+            $extends, // extends
+            array(), // interfaces
+            array(), // properties
+        );
+        $class->addUse($namespace . '\\' . $data['extends']);
+
+        $contents = '<?php' . PHP_EOL . PHP_EOL . $class->generate();
+
+        $path = 'src' . DIRECTORY_SEPARATOR . str_replace('\\', DIRECTORY_SEPARATOR, $name) . '.php';
+
+        file_put_contents($path, $contents);
+
+        $paths[]   = $path;
+        $classes[] = $realClassName;
+    }
+}
+
 foreach ($paths as $path) {
     include $path;
 }

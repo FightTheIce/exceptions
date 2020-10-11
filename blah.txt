@@ -1,23 +1,14 @@
-FightTheIce\Exceptions\BadFunctionCallException
-FightTheIce\Exceptions\BadMethodCallException
-FightTheIce\Exceptions\DomainException
-FightTheIce\Exceptions\InvalidArgumentException
-FightTheIce\Exceptions\LengthException
-FightTheIce\Exceptions\LogicException
-FightTheIce\Exceptions\OutOfBoundsException
-FightTheIce\Exceptions\OutOfRangeException
-FightTheIce\Exceptions\OverflowException
-FightTheIce\Exceptions\RangeException
-FightTheIce\Exceptions\RuntimeException
-FightTheIce\Exceptions\UnderflowException
-FightTheIce\Exceptions\UnexpectedValueException
-FightTheIce\Exceptions\Exception
-FightTheIce\Exceptions\ErrorException
-FightTheIce\Exceptions\Error
-FightTheIce\Exceptions\ArgumentCountError
-FightTheIce\Exceptions\ArithmeticError
-FightTheIce\Exceptions\AssertionError
-FightTheIce\Exceptions\DivisionByZeroError
-FightTheIce\Exceptions\CompileError
-FightTheIce\Exceptions\ParseError
-FightTheIce\Exceptions\TypeError
+PHPUnit 9.4.0 by Sebastian Bergmann and contributors.
+
+Warning:       Your XML configuration validates against a deprecated schema.
+Suggestion:    Migrate your XML configuration using "--migrate-configuration"!
+
+...............................................................  63 / 167 ( 37%)
+............................................................... 126 / 167 ( 75%)
+.........................................                       167 / 167 (100%)
+
+Time: 00:01.034, Memory: 26.00 MB
+
+OK (167 tests, 192 assertions)
+
+Generating code coverage report in HTML format ... done [00:00.120]
