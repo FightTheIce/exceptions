@@ -2,6 +2,11 @@
 
 Set of exceptions shared across Fight The Ice components. This lets you catch library-specific exceptions (if needed).
 
+This repository isn't really of value to use in your projects. You may however want to fork/clone this repository to build your own exception classes.
+
+Most of the documentation included here is just for personal reference.
+
+
 ## Installation
 
 The best way to use this component is through Composer:
@@ -28,7 +33,7 @@ class YourAwesomeException extends \FightTheIce\Exceptions\DomainException {
 ...
 try {
 	$obj->someMethod();
-} catch (YourAweomseException $e) {
+} catch (\YourAwesome $e) {
 	//Catch your specific execption
 } catch (\FightTheIce\Exceptions\DomainException $e) {
 	//catch FTI specific exception
@@ -41,16 +46,48 @@ try {
 }
 ```
 
+NOTE: It is expected that you will extend the exception libraries in order to set the component property value.
+To retrieve this value run the following:
+```php
+try {
+	$obj->someMethod();
+} catch (\YourAwesome $e) {
+	//Catch your specific execption
+	$component = $e->getComponent(); //your component name or "UNKNOWN"
+}
+```
+
 ## Building
 
-Exceptions, hierarchy, and linking gets messy. A file is included with the repository called "generate.php"
+The building tool "project.generate" is just a PHP script that uses laminas-code to generate the exception libraries and tests. 
 
-You will need to remove the "exit;" from the second line of the file. (Yes this was intentionally put there).
+[1] - Fork/Clone repository
 
-Change $namespace, to your name and run the generate command in a terminal window. 
+[2] - Run composer install/update
+```bash
+$ composer install
+$ composer update
+```
 
-All of your exceptions, and test suite will be automaticly generated for you.
+[3] - Execute the project.generate file
+```bash
+$ php project.generate
+```
 
+[4] - Composer Dump autoload
+```bash
+$ composer dump-autolod
+```
+
+[5] - Execute PHPUnit tests
+```bash
+$ ./vendor/bin/phpunit tests/
+```
+
+[6] - Get code coverage report
+```bash
+$ ./vendor/bin/phpunit --coverage-html html tests/
+```
 
 ## Contributing
 
