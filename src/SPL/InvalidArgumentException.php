@@ -14,7 +14,7 @@ namespace FightTheIce\Exceptions;
 
 use InvalidArgumentException as SPLInvalidArgumentException;
 
-class InvalidArgumentException extends SPLInvalidArgumentException implements ExceptionsInterface
+abstract class InvalidArgumentException extends SPLInvalidArgumentException implements ExceptionsInterface
 {
 
     use ComponentExceptionTrait;

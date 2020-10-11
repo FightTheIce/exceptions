@@ -1,5 +1,5 @@
 <?php
-//exit;
+exit;
 
 include 'vendor/autoload.php';
 
@@ -159,11 +159,12 @@ foreach ($standardclasses as $name => $data) {
     $class = new Laminas\Code\Generator\ClassGenerator(
         $className, // name
         $namespace, // namespace
-        null, // flags
+        Laminas\Code\Generator\ClassGenerator::FLAG_ABSTRACT, // flags
         $extendedName . $className, // extends
         array(), // interfaces
         array(), // properties
     );
+    $class->setAbstract(true);
 
     $class->addUse($className, $extendedName . $className);
     $class->addUse($namespace . '\\ExceptionsInterface');
@@ -213,11 +214,12 @@ if (isset($customClasses)) {
         $class = new Laminas\Code\Generator\ClassGenerator(
             $realClassName, // name
             null, // namespace
-            null, // flags
+            Laminas\Code\Generator\ClassGenerator::FLAG_ABSTRACT, // flags
             $extends, // extends
             array(), // interfaces
             array(), // properties
         );
+        $class->setAbstract(true);
         $class->addUse($namespace . '\\' . $data['extends']);
 
         $contents             = '<?php' . PHP_EOL . PHP_EOL . $class->generate();

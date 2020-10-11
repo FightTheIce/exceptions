@@ -14,7 +14,7 @@ namespace FightTheIce\Exceptions;
 
 use Exception as BaseException;
 
-class Exception extends BaseException implements ExceptionsInterface
+abstract class Exception extends BaseException implements ExceptionsInterface
 {
 
     use ComponentExceptionTrait;

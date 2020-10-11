@@ -14,7 +14,7 @@ namespace FightTheIce\Exceptions;
 
 use OutOfBoundsException as SPLOutOfBoundsException;
 
-class OutOfBoundsException extends SPLOutOfBoundsException implements ExceptionsInterface
+abstract class OutOfBoundsException extends SPLOutOfBoundsException implements ExceptionsInterface
 {
 
     use ComponentExceptionTrait;

@@ -14,7 +14,7 @@ namespace FightTheIce\Exceptions;
 
 use LogicException as SPLLogicException;
 
-class LogicException extends SPLLogicException implements ExceptionsInterface
+abstract class LogicException extends SPLLogicException implements ExceptionsInterface
 {
 
     use ComponentExceptionTrait;

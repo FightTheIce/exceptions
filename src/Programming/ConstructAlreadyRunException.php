@@ -4,7 +4,7 @@ namespace FightTheIce\Exceptions\Programming;
 
 use FightTheIce\Exceptions\BadMethodCallException;
 
-class ConstructAlreadyRunException extends BadMethodCallException
+abstract class ConstructAlreadyRunException extends BadMethodCallException
 {
 
 

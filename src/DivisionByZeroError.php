@@ -14,7 +14,7 @@ namespace FightTheIce\Exceptions;
 
 use DivisionByZeroError as BaseDivisionByZeroError;
 
-class DivisionByZeroError extends BaseDivisionByZeroError implements ExceptionsInterface
+abstract class DivisionByZeroError extends BaseDivisionByZeroError implements ExceptionsInterface
 {
 
     use ComponentExceptionTrait;

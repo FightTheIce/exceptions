@@ -14,7 +14,7 @@ namespace FightTheIce\Exceptions;
 
 use CompileError as BaseCompileError;
 
-class CompileError extends BaseCompileError implements ExceptionsInterface
+abstract class CompileError extends BaseCompileError implements ExceptionsInterface
 {
 
     use ComponentExceptionTrait;

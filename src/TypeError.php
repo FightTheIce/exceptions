@@ -14,7 +14,7 @@ namespace FightTheIce\Exceptions;
 
 use TypeError as BaseTypeError;
 
-class TypeError extends BaseTypeError implements ExceptionsInterface
+abstract class TypeError extends BaseTypeError implements ExceptionsInterface
 {
 
     use ComponentExceptionTrait;

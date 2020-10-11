@@ -14,7 +14,7 @@ namespace FightTheIce\Exceptions;
 
 use LengthException as SPLLengthException;
 
-class LengthException extends SPLLengthException implements ExceptionsInterface
+abstract class LengthException extends SPLLengthException implements ExceptionsInterface
 {
 
     use ComponentExceptionTrait;
