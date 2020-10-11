@@ -164,7 +164,6 @@ foreach ($standardclasses as $name => $data) {
         array(), // interfaces
         array(), // properties
     );
-    $class->setAbstract(true);
 
     $class->addUse($className, $extendedName . $className);
     $class->addUse($namespace . '\\ExceptionsInterface');
@@ -214,12 +213,11 @@ if (isset($customClasses)) {
         $class = new Laminas\Code\Generator\ClassGenerator(
             $realClassName, // name
             null, // namespace
-            Laminas\Code\Generator\ClassGenerator::FLAG_ABSTRACT, // flags
+            null, // flags
             $extends, // extends
             array(), // interfaces
             array(), // properties
         );
-        $class->setAbstract(true);
         $class->addUse($namespace . '\\' . $data['extends']);
 
         $contents             = '<?php' . PHP_EOL . PHP_EOL . $class->generate();
