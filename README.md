@@ -100,6 +100,13 @@ $ ./vendor/bin/phpunit tests/
 $ ./vendor/bin/phpunit --coverage-html html tests/
 ```
 
+[7] - Commit your changes
+```bash
+$ git add .
+$ git commit -m "Your Changes Description"
+$ git push origin {branch}
+```
+
 ## Contributing
 
 All feedback / bug reports / pull requests are welcome.
