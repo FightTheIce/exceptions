@@ -28,6 +28,10 @@ $ composer require fighttheice/exceptions
 
 ## Usage
 
+There are two ways to use these exception libraries...
+
+The first is extending an exception class for your own use.
+
 There are actually two steps to follow when trying to use the features of this library.
 
 [1] - Create your own exception classes by extending any of the FightTheIce\Exceptions\\{class}
@@ -65,6 +69,28 @@ try {
 } catch (\YourAwesome $e) {
 	//Catch your specific execption
 	$component = $e->getComponent(); //your component name or "UNKNOWN"
+}
+```
+
+The second way of utilizing these exceptions classes are to set the component name when you create the exception.
+
+This is an example of code that may utilize one of the exception classes setting a custom componentName
+```php
+<?php
+
+namespace App;
+
+use FightTheIce\Exceptions\FileSystem\FileNotFoundException;
+
+class SomethingImportant {
+	...
+	public function checkForFile($path) {
+		if (!file_exists($path)) {
+			$exception = new FileNotFoundException('The path provided is invalid!',1);
+			$exception->setComponentName('SomethingImportant');
+			throw $exception;
+		}
+	}
 }
 ```
 
