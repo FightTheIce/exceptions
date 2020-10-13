@@ -51,10 +51,10 @@ class BadMethodCallExceptionTest extends \PHPUnit\Framework\TestCase
         throw new \FightTheIce\Exceptions\BadMethodCallException("FightTheIce\Exceptions\ExceptionsInterface->Exception");
     }
 
-    public function test_BadMethodCallException_getComponent()
+    public function test_BadMethodCallException_getComponentName()
     {
         $exception = new \FightTheIce\Exceptions\BadMethodCallException;
-        $component = $exception->getComponent();
+        $component = $exception->getComponentName();
         $this->assertIsString($component);
         $this->assertEquals($component, 'UNKNOWN');
     }
@@ -63,6 +63,16 @@ class BadMethodCallExceptionTest extends \PHPUnit\Framework\TestCase
     {
         $this->expectException(\FightTheIce\Exceptions\BadMethodCallException::class,'Custom Message',1);
         throw new \FightTheIce\Exceptions\BadMethodCallException('Custom Message',1);
+    }
+
+    public function test_BadMethodCallException_setComponentName()
+    {
+        $componentName = "PHPUNIT";
+        $exception = new \FightTheIce\Exceptions\BadMethodCallException;
+        $exception->setComponentName($componentName);
+        $nameCheck = $exception->getComponentName();
+
+        $this->assertEquals($componentName, $nameCheck);
     }
 
 

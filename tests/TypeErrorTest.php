@@ -37,10 +37,10 @@ class TypeErrorTest extends \PHPUnit\Framework\TestCase
         throw new \FightTheIce\Exceptions\TypeError("FightTheIce\Exceptions\ExceptionsInterface->Exception");
     }
 
-    public function test_TypeError_getComponent()
+    public function test_TypeError_getComponentName()
     {
         $exception = new \FightTheIce\Exceptions\TypeError;
-        $component = $exception->getComponent();
+        $component = $exception->getComponentName();
         $this->assertIsString($component);
         $this->assertEquals($component, 'UNKNOWN');
     }
@@ -49,6 +49,16 @@ class TypeErrorTest extends \PHPUnit\Framework\TestCase
     {
         $this->expectException(\FightTheIce\Exceptions\TypeError::class,'Custom Message',1);
         throw new \FightTheIce\Exceptions\TypeError('Custom Message',1);
+    }
+
+    public function test_TypeError_setComponentName()
+    {
+        $componentName = "PHPUNIT";
+        $exception = new \FightTheIce\Exceptions\TypeError;
+        $exception->setComponentName($componentName);
+        $nameCheck = $exception->getComponentName();
+
+        $this->assertEquals($componentName, $nameCheck);
     }
 
 

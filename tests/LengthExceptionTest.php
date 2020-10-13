@@ -44,10 +44,10 @@ class LengthExceptionTest extends \PHPUnit\Framework\TestCase
         throw new \FightTheIce\Exceptions\LengthException("FightTheIce\Exceptions\ExceptionsInterface->Exception");
     }
 
-    public function test_LengthException_getComponent()
+    public function test_LengthException_getComponentName()
     {
         $exception = new \FightTheIce\Exceptions\LengthException;
-        $component = $exception->getComponent();
+        $component = $exception->getComponentName();
         $this->assertIsString($component);
         $this->assertEquals($component, 'UNKNOWN');
     }
@@ -56,6 +56,16 @@ class LengthExceptionTest extends \PHPUnit\Framework\TestCase
     {
         $this->expectException(\FightTheIce\Exceptions\LengthException::class,'Custom Message',1);
         throw new \FightTheIce\Exceptions\LengthException('Custom Message',1);
+    }
+
+    public function test_LengthException_setComponentName()
+    {
+        $componentName = "PHPUNIT";
+        $exception = new \FightTheIce\Exceptions\LengthException;
+        $exception->setComponentName($componentName);
+        $nameCheck = $exception->getComponentName();
+
+        $this->assertEquals($componentName, $nameCheck);
     }
 
 

@@ -37,10 +37,10 @@ class RuntimeExceptionTest extends \PHPUnit\Framework\TestCase
         throw new \FightTheIce\Exceptions\RuntimeException("FightTheIce\Exceptions\ExceptionsInterface->Exception");
     }
 
-    public function test_RuntimeException_getComponent()
+    public function test_RuntimeException_getComponentName()
     {
         $exception = new \FightTheIce\Exceptions\RuntimeException;
-        $component = $exception->getComponent();
+        $component = $exception->getComponentName();
         $this->assertIsString($component);
         $this->assertEquals($component, 'UNKNOWN');
     }
@@ -49,6 +49,16 @@ class RuntimeExceptionTest extends \PHPUnit\Framework\TestCase
     {
         $this->expectException(\FightTheIce\Exceptions\RuntimeException::class,'Custom Message',1);
         throw new \FightTheIce\Exceptions\RuntimeException('Custom Message',1);
+    }
+
+    public function test_RuntimeException_setComponentName()
+    {
+        $componentName = "PHPUNIT";
+        $exception = new \FightTheIce\Exceptions\RuntimeException;
+        $exception->setComponentName($componentName);
+        $nameCheck = $exception->getComponentName();
+
+        $this->assertEquals($componentName, $nameCheck);
     }
 
 

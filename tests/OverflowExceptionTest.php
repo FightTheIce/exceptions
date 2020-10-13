@@ -44,10 +44,10 @@ class OverflowExceptionTest extends \PHPUnit\Framework\TestCase
         throw new \FightTheIce\Exceptions\OverflowException("FightTheIce\Exceptions\ExceptionsInterface->Exception");
     }
 
-    public function test_OverflowException_getComponent()
+    public function test_OverflowException_getComponentName()
     {
         $exception = new \FightTheIce\Exceptions\OverflowException;
-        $component = $exception->getComponent();
+        $component = $exception->getComponentName();
         $this->assertIsString($component);
         $this->assertEquals($component, 'UNKNOWN');
     }
@@ -56,6 +56,16 @@ class OverflowExceptionTest extends \PHPUnit\Framework\TestCase
     {
         $this->expectException(\FightTheIce\Exceptions\OverflowException::class,'Custom Message',1);
         throw new \FightTheIce\Exceptions\OverflowException('Custom Message',1);
+    }
+
+    public function test_OverflowException_setComponentName()
+    {
+        $componentName = "PHPUNIT";
+        $exception = new \FightTheIce\Exceptions\OverflowException;
+        $exception->setComponentName($componentName);
+        $nameCheck = $exception->getComponentName();
+
+        $this->assertEquals($componentName, $nameCheck);
     }
 
 

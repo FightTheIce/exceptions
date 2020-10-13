@@ -37,10 +37,10 @@ class CompileErrorTest extends \PHPUnit\Framework\TestCase
         throw new \FightTheIce\Exceptions\CompileError("FightTheIce\Exceptions\ExceptionsInterface->Exception");
     }
 
-    public function test_CompileError_getComponent()
+    public function test_CompileError_getComponentName()
     {
         $exception = new \FightTheIce\Exceptions\CompileError;
-        $component = $exception->getComponent();
+        $component = $exception->getComponentName();
         $this->assertIsString($component);
         $this->assertEquals($component, 'UNKNOWN');
     }
@@ -49,6 +49,16 @@ class CompileErrorTest extends \PHPUnit\Framework\TestCase
     {
         $this->expectException(\FightTheIce\Exceptions\CompileError::class,'Custom Message',1);
         throw new \FightTheIce\Exceptions\CompileError('Custom Message',1);
+    }
+
+    public function test_CompileError_setComponentName()
+    {
+        $componentName = "PHPUNIT";
+        $exception = new \FightTheIce\Exceptions\CompileError;
+        $exception->setComponentName($componentName);
+        $nameCheck = $exception->getComponentName();
+
+        $this->assertEquals($componentName, $nameCheck);
     }
 
 

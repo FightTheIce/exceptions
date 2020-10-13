@@ -5,6 +5,7 @@ namespace FightTheIce\Exceptions;
 interface ExceptionsInterface
 {
 
-    public function getComponent();
+    public function getComponentName();
+    public function setComponentName($component);
 
 }

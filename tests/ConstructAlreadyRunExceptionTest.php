@@ -58,10 +58,10 @@ class ConstructAlreadyRunExceptionTest extends \PHPUnit\Framework\TestCase
         throw new \FightTheIce\Exceptions\Programming\ConstructAlreadyRunException("FightTheIce\Exceptions\ExceptionsInterface->Exception");
     }
 
-    public function test_ConstructAlreadyRunException_getComponent()
+    public function test_ConstructAlreadyRunException_getComponentName()
     {
         $exception = new \FightTheIce\Exceptions\Programming\ConstructAlreadyRunException;
-        $component = $exception->getComponent();
+        $component = $exception->getComponentName();
         $this->assertIsString($component);
         $this->assertEquals($component, 'UNKNOWN');
     }
@@ -70,6 +70,16 @@ class ConstructAlreadyRunExceptionTest extends \PHPUnit\Framework\TestCase
     {
         $this->expectException(\FightTheIce\Exceptions\Programming\ConstructAlreadyRunException::class,'Custom Message',1);
         throw new \FightTheIce\Exceptions\Programming\ConstructAlreadyRunException('Custom Message',1);
+    }
+
+    public function test_ConstructAlreadyRunException_setComponentName()
+    {
+        $componentName = "PHPUNIT";
+        $exception = new \FightTheIce\Exceptions\Programming\ConstructAlreadyRunException;
+        $exception->setComponentName($componentName);
+        $nameCheck = $exception->getComponentName();
+
+        $this->assertEquals($componentName, $nameCheck);
     }
 
 

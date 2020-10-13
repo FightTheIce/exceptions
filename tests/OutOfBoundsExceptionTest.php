@@ -44,10 +44,10 @@ class OutOfBoundsExceptionTest extends \PHPUnit\Framework\TestCase
         throw new \FightTheIce\Exceptions\OutOfBoundsException("FightTheIce\Exceptions\ExceptionsInterface->Exception");
     }
 
-    public function test_OutOfBoundsException_getComponent()
+    public function test_OutOfBoundsException_getComponentName()
     {
         $exception = new \FightTheIce\Exceptions\OutOfBoundsException;
-        $component = $exception->getComponent();
+        $component = $exception->getComponentName();
         $this->assertIsString($component);
         $this->assertEquals($component, 'UNKNOWN');
     }
@@ -56,6 +56,16 @@ class OutOfBoundsExceptionTest extends \PHPUnit\Framework\TestCase
     {
         $this->expectException(\FightTheIce\Exceptions\OutOfBoundsException::class,'Custom Message',1);
         throw new \FightTheIce\Exceptions\OutOfBoundsException('Custom Message',1);
+    }
+
+    public function test_OutOfBoundsException_setComponentName()
+    {
+        $componentName = "PHPUNIT";
+        $exception = new \FightTheIce\Exceptions\OutOfBoundsException;
+        $exception->setComponentName($componentName);
+        $nameCheck = $exception->getComponentName();
+
+        $this->assertEquals($componentName, $nameCheck);
     }
 
 

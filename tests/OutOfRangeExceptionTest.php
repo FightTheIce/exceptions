@@ -44,10 +44,10 @@ class OutOfRangeExceptionTest extends \PHPUnit\Framework\TestCase
         throw new \FightTheIce\Exceptions\OutOfRangeException("FightTheIce\Exceptions\ExceptionsInterface->Exception");
     }
 
-    public function test_OutOfRangeException_getComponent()
+    public function test_OutOfRangeException_getComponentName()
     {
         $exception = new \FightTheIce\Exceptions\OutOfRangeException;
-        $component = $exception->getComponent();
+        $component = $exception->getComponentName();
         $this->assertIsString($component);
         $this->assertEquals($component, 'UNKNOWN');
     }
@@ -56,6 +56,16 @@ class OutOfRangeExceptionTest extends \PHPUnit\Framework\TestCase
     {
         $this->expectException(\FightTheIce\Exceptions\OutOfRangeException::class,'Custom Message',1);
         throw new \FightTheIce\Exceptions\OutOfRangeException('Custom Message',1);
+    }
+
+    public function test_OutOfRangeException_setComponentName()
+    {
+        $componentName = "PHPUNIT";
+        $exception = new \FightTheIce\Exceptions\OutOfRangeException;
+        $exception->setComponentName($componentName);
+        $nameCheck = $exception->getComponentName();
+
+        $this->assertEquals($componentName, $nameCheck);
     }
 
 

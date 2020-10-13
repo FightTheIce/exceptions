@@ -37,10 +37,10 @@ class AssertionErrorTest extends \PHPUnit\Framework\TestCase
         throw new \FightTheIce\Exceptions\AssertionError("FightTheIce\Exceptions\ExceptionsInterface->Exception");
     }
 
-    public function test_AssertionError_getComponent()
+    public function test_AssertionError_getComponentName()
     {
         $exception = new \FightTheIce\Exceptions\AssertionError;
-        $component = $exception->getComponent();
+        $component = $exception->getComponentName();
         $this->assertIsString($component);
         $this->assertEquals($component, 'UNKNOWN');
     }
@@ -49,6 +49,16 @@ class AssertionErrorTest extends \PHPUnit\Framework\TestCase
     {
         $this->expectException(\FightTheIce\Exceptions\AssertionError::class,'Custom Message',1);
         throw new \FightTheIce\Exceptions\AssertionError('Custom Message',1);
+    }
+
+    public function test_AssertionError_setComponentName()
+    {
+        $componentName = "PHPUNIT";
+        $exception = new \FightTheIce\Exceptions\AssertionError;
+        $exception->setComponentName($componentName);
+        $nameCheck = $exception->getComponentName();
+
+        $this->assertEquals($componentName, $nameCheck);
     }
 
 

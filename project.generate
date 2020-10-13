@@ -151,8 +151,13 @@ $interface = new Laminas\Code\Generator\InterfaceGenerator(
     array(), // interfaces
     array(), // properties
 );
-$method = new Laminas\Code\Generator\MethodGenerator('getComponent');
+
+$method = new Laminas\Code\Generator\MethodGenerator('getComponentName');
 $interface->addMethodFromGenerator($method);
+
+$method = new Laminas\Code\Generator\MethodGenerator('setComponentName',array('component'));
+$interface->addMethodFromGenerator($method);
+
 $path    = 'src' . DIRECTORY_SEPARATOR . 'ExceptionsInterface.php';
 $paths[] = $path;
 file_put_contents($path, '<?php' . PHP_EOL . PHP_EOL . $interface->generate());
@@ -166,12 +171,16 @@ $trait = new Laminas\Code\Generator\TraitGenerator(
     array(), // interfaces
     array(), // properties
 );
-$trait->addProperty('component', 'UNKNOWN', Laminas\Code\Generator\PropertyGenerator::FLAG_PROTECTED);
+$trait->addProperty('componentName', 'UNKNOWN', Laminas\Code\Generator\PropertyGenerator::FLAG_PROTECTED);
 
-$method = new Laminas\Code\Generator\MethodGenerator('getComponent');
-$method->setBody('return $this->component;');
-
+$method = new Laminas\Code\Generator\MethodGenerator('getComponentName');
+$method->setBody('return $this->componentName;');
 $trait->addMethodFromGenerator($method);
+
+$method = new Laminas\Code\Generator\MethodGenerator('setComponentName',array('component'));
+$method->setBody('$this->componentName = $component;');
+$trait->addMethodFromGenerator($method);
+
 $path    = 'src' . DIRECTORY_SEPARATOR . 'ComponentExceptionTrait.php';
 $paths[] = $path;
 file_put_contents($path, '<?php' . PHP_EOL . PHP_EOL . $trait->generate());
@@ -263,6 +272,10 @@ if (isset($customClasses)) {
             array(), // properties
         );
         $class->addUse($namespace . '\\' . $data['extends']);
+        $class->addUse($namespace . '\\ExceptionsInterface');
+        $class->addUse($namespace . '\\ComponentExceptionTrait');
+        $class->addTrait('ComponentExceptionTrait');
+        $class->setImplementedInterfaces(array($namespace . '\\ExceptionsInterface'));
 
         $contents = '<?php' . PHP_EOL . PHP_EOL . $class->generate();
 
@@ -308,9 +321,9 @@ foreach ($classes as $cObjName) {
         $class->addMethodFromGenerator($method);
     }
 
-    $method = new Laminas\Code\Generator\MethodGenerator('test_' . $name . '_getComponent');
+    $method = new Laminas\Code\Generator\MethodGenerator('test_' . $name . '_getComponentName');
     $body   = '$exception = new \\' . $cObjName . ';' . PHP_EOL;
-    $body   = $body . '$component = $exception->getComponent();' . PHP_EOL;
+    $body   = $body . '$component = $exception->getComponentName();' . PHP_EOL;
     $body   = $body . '$this->assertIsString($component);' . PHP_EOL;
     $body   = $body . '$this->assertEquals($component, \'UNKNOWN\');' . PHP_EOL;
     $method->setBody($body);
@@ -321,6 +334,17 @@ foreach ($classes as $cObjName) {
     $body   = $body . PHP_EOL . "throw new \\" . $cObjName . "('Custom Message',1);";
     $method->setBody($body);
     $class->addMethodFromGenerator($method);
+
+    $method = new Laminas\Code\Generator\MethodGenerator('test_' . $name . '_setComponentName');
+    $body = '$componentName = "PHPUNIT";'.PHP_EOL;
+    $body = $body.'$exception = new \\'.$cObjName.';'.PHP_EOL;
+    $body = $body.'$exception->setComponentName($componentName);'.PHP_EOL;
+    $body = $body.'$nameCheck = $exception->getComponentName();'.PHP_EOL;
+    $body = $body.PHP_EOL;
+    $body = $body.'$this->assertEquals($componentName, $nameCheck);' . PHP_EOL;
+    $method->setBody($body);
+    $class->addMethodFromGenerator($method);
+
     file_put_contents('tests' . DIRECTORY_SEPARATOR . $name . 'Test.php', '<?php' . PHP_EOL . '/*' . PHP_EOL . print_r($links, true) . '*/' . PHP_EOL . $class->generate());
 }
 

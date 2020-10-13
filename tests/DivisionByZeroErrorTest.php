@@ -44,10 +44,10 @@ class DivisionByZeroErrorTest extends \PHPUnit\Framework\TestCase
         throw new \FightTheIce\Exceptions\DivisionByZeroError("FightTheIce\Exceptions\ExceptionsInterface->Exception");
     }
 
-    public function test_DivisionByZeroError_getComponent()
+    public function test_DivisionByZeroError_getComponentName()
     {
         $exception = new \FightTheIce\Exceptions\DivisionByZeroError;
-        $component = $exception->getComponent();
+        $component = $exception->getComponentName();
         $this->assertIsString($component);
         $this->assertEquals($component, 'UNKNOWN');
     }
@@ -56,6 +56,16 @@ class DivisionByZeroErrorTest extends \PHPUnit\Framework\TestCase
     {
         $this->expectException(\FightTheIce\Exceptions\DivisionByZeroError::class,'Custom Message',1);
         throw new \FightTheIce\Exceptions\DivisionByZeroError('Custom Message',1);
+    }
+
+    public function test_DivisionByZeroError_setComponentName()
+    {
+        $componentName = "PHPUNIT";
+        $exception = new \FightTheIce\Exceptions\DivisionByZeroError;
+        $exception->setComponentName($componentName);
+        $nameCheck = $exception->getComponentName();
+
+        $this->assertEquals($componentName, $nameCheck);
     }
 
 

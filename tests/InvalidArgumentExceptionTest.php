@@ -44,10 +44,10 @@ class InvalidArgumentExceptionTest extends \PHPUnit\Framework\TestCase
         throw new \FightTheIce\Exceptions\InvalidArgumentException("FightTheIce\Exceptions\ExceptionsInterface->Exception");
     }
 
-    public function test_InvalidArgumentException_getComponent()
+    public function test_InvalidArgumentException_getComponentName()
     {
         $exception = new \FightTheIce\Exceptions\InvalidArgumentException;
-        $component = $exception->getComponent();
+        $component = $exception->getComponentName();
         $this->assertIsString($component);
         $this->assertEquals($component, 'UNKNOWN');
     }
@@ -56,6 +56,16 @@ class InvalidArgumentExceptionTest extends \PHPUnit\Framework\TestCase
     {
         $this->expectException(\FightTheIce\Exceptions\InvalidArgumentException::class,'Custom Message',1);
         throw new \FightTheIce\Exceptions\InvalidArgumentException('Custom Message',1);
+    }
+
+    public function test_InvalidArgumentException_setComponentName()
+    {
+        $componentName = "PHPUNIT";
+        $exception = new \FightTheIce\Exceptions\InvalidArgumentException;
+        $exception->setComponentName($componentName);
+        $nameCheck = $exception->getComponentName();
+
+        $this->assertEquals($componentName, $nameCheck);
     }
 
 

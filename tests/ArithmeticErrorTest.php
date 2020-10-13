@@ -37,10 +37,10 @@ class ArithmeticErrorTest extends \PHPUnit\Framework\TestCase
         throw new \FightTheIce\Exceptions\ArithmeticError("FightTheIce\Exceptions\ExceptionsInterface->Exception");
     }
 
-    public function test_ArithmeticError_getComponent()
+    public function test_ArithmeticError_getComponentName()
     {
         $exception = new \FightTheIce\Exceptions\ArithmeticError;
-        $component = $exception->getComponent();
+        $component = $exception->getComponentName();
         $this->assertIsString($component);
         $this->assertEquals($component, 'UNKNOWN');
     }
@@ -49,6 +49,16 @@ class ArithmeticErrorTest extends \PHPUnit\Framework\TestCase
     {
         $this->expectException(\FightTheIce\Exceptions\ArithmeticError::class,'Custom Message',1);
         throw new \FightTheIce\Exceptions\ArithmeticError('Custom Message',1);
+    }
+
+    public function test_ArithmeticError_setComponentName()
+    {
+        $componentName = "PHPUNIT";
+        $exception = new \FightTheIce\Exceptions\ArithmeticError;
+        $exception->setComponentName($componentName);
+        $nameCheck = $exception->getComponentName();
+
+        $this->assertEquals($componentName, $nameCheck);
     }
 
 

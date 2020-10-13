@@ -30,10 +30,10 @@ class ErrorTest extends \PHPUnit\Framework\TestCase
         throw new \FightTheIce\Exceptions\Error("FightTheIce\Exceptions\ExceptionsInterface->Exception");
     }
 
-    public function test_Error_getComponent()
+    public function test_Error_getComponentName()
     {
         $exception = new \FightTheIce\Exceptions\Error;
-        $component = $exception->getComponent();
+        $component = $exception->getComponentName();
         $this->assertIsString($component);
         $this->assertEquals($component, 'UNKNOWN');
     }
@@ -42,6 +42,16 @@ class ErrorTest extends \PHPUnit\Framework\TestCase
     {
         $this->expectException(\FightTheIce\Exceptions\Error::class,'Custom Message',1);
         throw new \FightTheIce\Exceptions\Error('Custom Message',1);
+    }
+
+    public function test_Error_setComponentName()
+    {
+        $componentName = "PHPUNIT";
+        $exception = new \FightTheIce\Exceptions\Error;
+        $exception->setComponentName($componentName);
+        $nameCheck = $exception->getComponentName();
+
+        $this->assertEquals($componentName, $nameCheck);
     }
 
 

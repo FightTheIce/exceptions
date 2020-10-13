@@ -37,10 +37,10 @@ class LogicExceptionTest extends \PHPUnit\Framework\TestCase
         throw new \FightTheIce\Exceptions\LogicException("FightTheIce\Exceptions\ExceptionsInterface->Exception");
     }
 
-    public function test_LogicException_getComponent()
+    public function test_LogicException_getComponentName()
     {
         $exception = new \FightTheIce\Exceptions\LogicException;
-        $component = $exception->getComponent();
+        $component = $exception->getComponentName();
         $this->assertIsString($component);
         $this->assertEquals($component, 'UNKNOWN');
     }
@@ -49,6 +49,16 @@ class LogicExceptionTest extends \PHPUnit\Framework\TestCase
     {
         $this->expectException(\FightTheIce\Exceptions\LogicException::class,'Custom Message',1);
         throw new \FightTheIce\Exceptions\LogicException('Custom Message',1);
+    }
+
+    public function test_LogicException_setComponentName()
+    {
+        $componentName = "PHPUNIT";
+        $exception = new \FightTheIce\Exceptions\LogicException;
+        $exception->setComponentName($componentName);
+        $nameCheck = $exception->getComponentName();
+
+        $this->assertEquals($componentName, $nameCheck);
     }
 
 

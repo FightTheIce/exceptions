@@ -44,10 +44,10 @@ class ArgumentCountErrorTest extends \PHPUnit\Framework\TestCase
         throw new \FightTheIce\Exceptions\ArgumentCountError("FightTheIce\Exceptions\ExceptionsInterface->Exception");
     }
 
-    public function test_ArgumentCountError_getComponent()
+    public function test_ArgumentCountError_getComponentName()
     {
         $exception = new \FightTheIce\Exceptions\ArgumentCountError;
-        $component = $exception->getComponent();
+        $component = $exception->getComponentName();
         $this->assertIsString($component);
         $this->assertEquals($component, 'UNKNOWN');
     }
@@ -56,6 +56,16 @@ class ArgumentCountErrorTest extends \PHPUnit\Framework\TestCase
     {
         $this->expectException(\FightTheIce\Exceptions\ArgumentCountError::class,'Custom Message',1);
         throw new \FightTheIce\Exceptions\ArgumentCountError('Custom Message',1);
+    }
+
+    public function test_ArgumentCountError_setComponentName()
+    {
+        $componentName = "PHPUNIT";
+        $exception = new \FightTheIce\Exceptions\ArgumentCountError;
+        $exception->setComponentName($componentName);
+        $nameCheck = $exception->getComponentName();
+
+        $this->assertEquals($componentName, $nameCheck);
     }
 
 

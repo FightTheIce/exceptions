@@ -44,10 +44,10 @@ class UnexpectedValueExceptionTest extends \PHPUnit\Framework\TestCase
         throw new \FightTheIce\Exceptions\UnexpectedValueException("FightTheIce\Exceptions\ExceptionsInterface->Exception");
     }
 
-    public function test_UnexpectedValueException_getComponent()
+    public function test_UnexpectedValueException_getComponentName()
     {
         $exception = new \FightTheIce\Exceptions\UnexpectedValueException;
-        $component = $exception->getComponent();
+        $component = $exception->getComponentName();
         $this->assertIsString($component);
         $this->assertEquals($component, 'UNKNOWN');
     }
@@ -56,6 +56,16 @@ class UnexpectedValueExceptionTest extends \PHPUnit\Framework\TestCase
     {
         $this->expectException(\FightTheIce\Exceptions\UnexpectedValueException::class,'Custom Message',1);
         throw new \FightTheIce\Exceptions\UnexpectedValueException('Custom Message',1);
+    }
+
+    public function test_UnexpectedValueException_setComponentName()
+    {
+        $componentName = "PHPUNIT";
+        $exception = new \FightTheIce\Exceptions\UnexpectedValueException;
+        $exception->setComponentName($componentName);
+        $nameCheck = $exception->getComponentName();
+
+        $this->assertEquals($componentName, $nameCheck);
     }
 
 

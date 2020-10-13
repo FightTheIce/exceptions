@@ -5,11 +5,16 @@ namespace FightTheIce\Exceptions;
 trait ComponentExceptionTrait
 {
 
-    protected $component = 'UNKNOWN';
+    protected $componentName = 'UNKNOWN';
 
-    public function getComponent()
+    public function getComponentName()
     {
-        return $this->component;
+        return $this->componentName;
+    }
+
+    public function setComponentName($component)
+    {
+        $this->componentName = $component;
     }
 
 

@@ -44,10 +44,10 @@ class BadFunctionCallExceptionTest extends \PHPUnit\Framework\TestCase
         throw new \FightTheIce\Exceptions\BadFunctionCallException("FightTheIce\Exceptions\ExceptionsInterface->Exception");
     }
 
-    public function test_BadFunctionCallException_getComponent()
+    public function test_BadFunctionCallException_getComponentName()
     {
         $exception = new \FightTheIce\Exceptions\BadFunctionCallException;
-        $component = $exception->getComponent();
+        $component = $exception->getComponentName();
         $this->assertIsString($component);
         $this->assertEquals($component, 'UNKNOWN');
     }
@@ -56,6 +56,16 @@ class BadFunctionCallExceptionTest extends \PHPUnit\Framework\TestCase
     {
         $this->expectException(\FightTheIce\Exceptions\BadFunctionCallException::class,'Custom Message',1);
         throw new \FightTheIce\Exceptions\BadFunctionCallException('Custom Message',1);
+    }
+
+    public function test_BadFunctionCallException_setComponentName()
+    {
+        $componentName = "PHPUNIT";
+        $exception = new \FightTheIce\Exceptions\BadFunctionCallException;
+        $exception->setComponentName($componentName);
+        $nameCheck = $exception->getComponentName();
+
+        $this->assertEquals($componentName, $nameCheck);
     }
 
 
