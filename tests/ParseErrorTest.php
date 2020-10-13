@@ -13,7 +13,6 @@ namespace FightTheIce\Tests\Exceptions;
 
 class ParseErrorTest extends \PHPUnit\Framework\TestCase
 {
-
     public function test_ParseError_FightTheIce_Exceptions_ParseError()
     {
         $this->expectException(\FightTheIce\Exceptions\ParseError::class);
@@ -54,8 +53,8 @@ class ParseErrorTest extends \PHPUnit\Framework\TestCase
 
     public function test_ParseError_BaseException()
     {
-        $this->expectException(\FightTheIce\Exceptions\ParseError::class,'Custom Message',1);
-        throw new \FightTheIce\Exceptions\ParseError('Custom Message',1);
+        $this->expectException(\FightTheIce\Exceptions\ParseError::class, 'Custom Message', 1);
+        throw new \FightTheIce\Exceptions\ParseError('Custom Message', 1);
     }
 
     public function test_ParseError_setComponentName()
@@ -67,6 +66,4 @@ class ParseErrorTest extends \PHPUnit\Framework\TestCase
 
         $this->assertEquals($componentName, $nameCheck);
     }
-
-
 }

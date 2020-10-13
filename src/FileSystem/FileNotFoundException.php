@@ -8,8 +8,5 @@ use FightTheIce\Exceptions\ComponentExceptionTrait;
 
 class FileNotFoundException extends ErrorException implements ExceptionsInterface
 {
-
     use ComponentExceptionTrait;
-
-
 }

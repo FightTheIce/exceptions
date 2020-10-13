@@ -16,8 +16,5 @@ use RangeException as SPLRangeException;
 
 class RangeException extends SPLRangeException implements ExceptionsInterface
 {
-
     use ComponentExceptionTrait;
-
-
 }

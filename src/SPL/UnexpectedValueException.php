@@ -16,8 +16,5 @@ use UnexpectedValueException as SPLUnexpectedValueException;
 
 class UnexpectedValueException extends SPLUnexpectedValueException implements ExceptionsInterface
 {
-
     use ComponentExceptionTrait;
-
-
 }

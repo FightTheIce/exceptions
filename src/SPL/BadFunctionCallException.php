@@ -16,8 +16,5 @@ use BadFunctionCallException as SPLBadFunctionCallException;
 
 class BadFunctionCallException extends SPLBadFunctionCallException implements ExceptionsInterface
 {
-
     use ComponentExceptionTrait;
-
-
 }

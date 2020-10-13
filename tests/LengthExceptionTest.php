@@ -13,7 +13,6 @@ namespace FightTheIce\Tests\Exceptions;
 
 class LengthExceptionTest extends \PHPUnit\Framework\TestCase
 {
-
     public function test_LengthException_FightTheIce_Exceptions_LengthException()
     {
         $this->expectException(\FightTheIce\Exceptions\LengthException::class);
@@ -54,8 +53,8 @@ class LengthExceptionTest extends \PHPUnit\Framework\TestCase
 
     public function test_LengthException_BaseException()
     {
-        $this->expectException(\FightTheIce\Exceptions\LengthException::class,'Custom Message',1);
-        throw new \FightTheIce\Exceptions\LengthException('Custom Message',1);
+        $this->expectException(\FightTheIce\Exceptions\LengthException::class, 'Custom Message', 1);
+        throw new \FightTheIce\Exceptions\LengthException('Custom Message', 1);
     }
 
     public function test_LengthException_setComponentName()
@@ -67,6 +66,4 @@ class LengthExceptionTest extends \PHPUnit\Framework\TestCase
 
         $this->assertEquals($componentName, $nameCheck);
     }
-
-
 }

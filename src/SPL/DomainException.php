@@ -16,8 +16,5 @@ use DomainException as SPLDomainException;
 
 class DomainException extends SPLDomainException implements ExceptionsInterface
 {
-
     use ComponentExceptionTrait;
-
-
 }

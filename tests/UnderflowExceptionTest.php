@@ -13,7 +13,6 @@ namespace FightTheIce\Tests\Exceptions;
 
 class UnderflowExceptionTest extends \PHPUnit\Framework\TestCase
 {
-
     public function test_UnderflowException_FightTheIce_Exceptions_UnderflowException()
     {
         $this->expectException(\FightTheIce\Exceptions\UnderflowException::class);
@@ -54,8 +53,8 @@ class UnderflowExceptionTest extends \PHPUnit\Framework\TestCase
 
     public function test_UnderflowException_BaseException()
     {
-        $this->expectException(\FightTheIce\Exceptions\UnderflowException::class,'Custom Message',1);
-        throw new \FightTheIce\Exceptions\UnderflowException('Custom Message',1);
+        $this->expectException(\FightTheIce\Exceptions\UnderflowException::class, 'Custom Message', 1);
+        throw new \FightTheIce\Exceptions\UnderflowException('Custom Message', 1);
     }
 
     public function test_UnderflowException_setComponentName()
@@ -67,6 +66,4 @@ class UnderflowExceptionTest extends \PHPUnit\Framework\TestCase
 
         $this->assertEquals($componentName, $nameCheck);
     }
-
-
 }

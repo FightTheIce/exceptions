@@ -8,8 +8,5 @@ use FightTheIce\Exceptions\ComponentExceptionTrait;
 
 class ConstructAlreadyRunException extends BadMethodCallException implements ExceptionsInterface
 {
-
     use ComponentExceptionTrait;
-
-
 }

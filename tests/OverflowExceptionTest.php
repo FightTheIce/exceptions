@@ -13,7 +13,6 @@ namespace FightTheIce\Tests\Exceptions;
 
 class OverflowExceptionTest extends \PHPUnit\Framework\TestCase
 {
-
     public function test_OverflowException_FightTheIce_Exceptions_OverflowException()
     {
         $this->expectException(\FightTheIce\Exceptions\OverflowException::class);
@@ -54,8 +53,8 @@ class OverflowExceptionTest extends \PHPUnit\Framework\TestCase
 
     public function test_OverflowException_BaseException()
     {
-        $this->expectException(\FightTheIce\Exceptions\OverflowException::class,'Custom Message',1);
-        throw new \FightTheIce\Exceptions\OverflowException('Custom Message',1);
+        $this->expectException(\FightTheIce\Exceptions\OverflowException::class, 'Custom Message', 1);
+        throw new \FightTheIce\Exceptions\OverflowException('Custom Message', 1);
     }
 
     public function test_OverflowException_setComponentName()
@@ -67,6 +66,4 @@ class OverflowExceptionTest extends \PHPUnit\Framework\TestCase
 
         $this->assertEquals($componentName, $nameCheck);
     }
-
-
 }

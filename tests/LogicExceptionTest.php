@@ -12,7 +12,6 @@ namespace FightTheIce\Tests\Exceptions;
 
 class LogicExceptionTest extends \PHPUnit\Framework\TestCase
 {
-
     public function test_LogicException_FightTheIce_Exceptions_LogicException()
     {
         $this->expectException(\FightTheIce\Exceptions\LogicException::class);
@@ -47,8 +46,8 @@ class LogicExceptionTest extends \PHPUnit\Framework\TestCase
 
     public function test_LogicException_BaseException()
     {
-        $this->expectException(\FightTheIce\Exceptions\LogicException::class,'Custom Message',1);
-        throw new \FightTheIce\Exceptions\LogicException('Custom Message',1);
+        $this->expectException(\FightTheIce\Exceptions\LogicException::class, 'Custom Message', 1);
+        throw new \FightTheIce\Exceptions\LogicException('Custom Message', 1);
     }
 
     public function test_LogicException_setComponentName()
@@ -60,6 +59,4 @@ class LogicExceptionTest extends \PHPUnit\Framework\TestCase
 
         $this->assertEquals($componentName, $nameCheck);
     }
-
-
 }

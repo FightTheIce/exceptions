@@ -13,7 +13,6 @@ namespace FightTheIce\Tests\Exceptions;
 
 class InvalidArgumentExceptionTest extends \PHPUnit\Framework\TestCase
 {
-
     public function test_InvalidArgumentException_FightTheIce_Exceptions_InvalidArgumentException()
     {
         $this->expectException(\FightTheIce\Exceptions\InvalidArgumentException::class);
@@ -54,8 +53,8 @@ class InvalidArgumentExceptionTest extends \PHPUnit\Framework\TestCase
 
     public function test_InvalidArgumentException_BaseException()
     {
-        $this->expectException(\FightTheIce\Exceptions\InvalidArgumentException::class,'Custom Message',1);
-        throw new \FightTheIce\Exceptions\InvalidArgumentException('Custom Message',1);
+        $this->expectException(\FightTheIce\Exceptions\InvalidArgumentException::class, 'Custom Message', 1);
+        throw new \FightTheIce\Exceptions\InvalidArgumentException('Custom Message', 1);
     }
 
     public function test_InvalidArgumentException_setComponentName()
@@ -67,6 +66,4 @@ class InvalidArgumentExceptionTest extends \PHPUnit\Framework\TestCase
 
         $this->assertEquals($componentName, $nameCheck);
     }
-
-
 }

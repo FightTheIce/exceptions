@@ -13,7 +13,6 @@ namespace FightTheIce\Tests\Exceptions;
 
 class OutOfBoundsExceptionTest extends \PHPUnit\Framework\TestCase
 {
-
     public function test_OutOfBoundsException_FightTheIce_Exceptions_OutOfBoundsException()
     {
         $this->expectException(\FightTheIce\Exceptions\OutOfBoundsException::class);
@@ -54,8 +53,8 @@ class OutOfBoundsExceptionTest extends \PHPUnit\Framework\TestCase
 
     public function test_OutOfBoundsException_BaseException()
     {
-        $this->expectException(\FightTheIce\Exceptions\OutOfBoundsException::class,'Custom Message',1);
-        throw new \FightTheIce\Exceptions\OutOfBoundsException('Custom Message',1);
+        $this->expectException(\FightTheIce\Exceptions\OutOfBoundsException::class, 'Custom Message', 1);
+        throw new \FightTheIce\Exceptions\OutOfBoundsException('Custom Message', 1);
     }
 
     public function test_OutOfBoundsException_setComponentName()
@@ -67,6 +66,4 @@ class OutOfBoundsExceptionTest extends \PHPUnit\Framework\TestCase
 
         $this->assertEquals($componentName, $nameCheck);
     }
-
-
 }

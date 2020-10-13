@@ -16,8 +16,5 @@ use InvalidArgumentException as SPLInvalidArgumentException;
 
 class InvalidArgumentException extends SPLInvalidArgumentException implements ExceptionsInterface
 {
-
     use ComponentExceptionTrait;
-
-
 }

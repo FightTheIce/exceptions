@@ -12,7 +12,6 @@ namespace FightTheIce\Tests\Exceptions;
 
 class ArithmeticErrorTest extends \PHPUnit\Framework\TestCase
 {
-
     public function test_ArithmeticError_FightTheIce_Exceptions_ArithmeticError()
     {
         $this->expectException(\FightTheIce\Exceptions\ArithmeticError::class);
@@ -47,8 +46,8 @@ class ArithmeticErrorTest extends \PHPUnit\Framework\TestCase
 
     public function test_ArithmeticError_BaseException()
     {
-        $this->expectException(\FightTheIce\Exceptions\ArithmeticError::class,'Custom Message',1);
-        throw new \FightTheIce\Exceptions\ArithmeticError('Custom Message',1);
+        $this->expectException(\FightTheIce\Exceptions\ArithmeticError::class, 'Custom Message', 1);
+        throw new \FightTheIce\Exceptions\ArithmeticError('Custom Message', 1);
     }
 
     public function test_ArithmeticError_setComponentName()
@@ -60,6 +59,4 @@ class ArithmeticErrorTest extends \PHPUnit\Framework\TestCase
 
         $this->assertEquals($componentName, $nameCheck);
     }
-
-
 }

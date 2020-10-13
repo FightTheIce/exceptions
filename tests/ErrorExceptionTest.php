@@ -12,7 +12,6 @@ namespace FightTheIce\Tests\Exceptions;
 
 class ErrorExceptionTest extends \PHPUnit\Framework\TestCase
 {
-
     public function test_ErrorException_FightTheIce_Exceptions_ErrorException()
     {
         $this->expectException(\FightTheIce\Exceptions\ErrorException::class);
@@ -47,8 +46,8 @@ class ErrorExceptionTest extends \PHPUnit\Framework\TestCase
 
     public function test_ErrorException_BaseException()
     {
-        $this->expectException(\FightTheIce\Exceptions\ErrorException::class,'Custom Message',1);
-        throw new \FightTheIce\Exceptions\ErrorException('Custom Message',1);
+        $this->expectException(\FightTheIce\Exceptions\ErrorException::class, 'Custom Message', 1);
+        throw new \FightTheIce\Exceptions\ErrorException('Custom Message', 1);
     }
 
     public function test_ErrorException_setComponentName()
@@ -60,6 +59,4 @@ class ErrorExceptionTest extends \PHPUnit\Framework\TestCase
 
         $this->assertEquals($componentName, $nameCheck);
     }
-
-
 }

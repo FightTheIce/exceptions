@@ -13,7 +13,6 @@ namespace FightTheIce\Tests\Exceptions;
 
 class DomainExceptionTest extends \PHPUnit\Framework\TestCase
 {
-
     public function test_DomainException_FightTheIce_Exceptions_DomainException()
     {
         $this->expectException(\FightTheIce\Exceptions\DomainException::class);
@@ -54,8 +53,8 @@ class DomainExceptionTest extends \PHPUnit\Framework\TestCase
 
     public function test_DomainException_BaseException()
     {
-        $this->expectException(\FightTheIce\Exceptions\DomainException::class,'Custom Message',1);
-        throw new \FightTheIce\Exceptions\DomainException('Custom Message',1);
+        $this->expectException(\FightTheIce\Exceptions\DomainException::class, 'Custom Message', 1);
+        throw new \FightTheIce\Exceptions\DomainException('Custom Message', 1);
     }
 
     public function test_DomainException_setComponentName()
@@ -67,6 +66,4 @@ class DomainExceptionTest extends \PHPUnit\Framework\TestCase
 
         $this->assertEquals($componentName, $nameCheck);
     }
-
-
 }

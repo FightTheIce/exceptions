@@ -16,8 +16,5 @@ use AssertionError as BaseAssertionError;
 
 class AssertionError extends BaseAssertionError implements ExceptionsInterface
 {
-
     use ComponentExceptionTrait;
-
-
 }

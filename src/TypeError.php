@@ -16,8 +16,5 @@ use TypeError as BaseTypeError;
 
 class TypeError extends BaseTypeError implements ExceptionsInterface
 {
-
     use ComponentExceptionTrait;
-
-
 }

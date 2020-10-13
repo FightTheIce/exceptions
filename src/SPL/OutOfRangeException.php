@@ -16,8 +16,5 @@ use OutOfRangeException as SPLOutOfRangeException;
 
 class OutOfRangeException extends SPLOutOfRangeException implements ExceptionsInterface
 {
-
     use ComponentExceptionTrait;
-
-
 }

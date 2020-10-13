@@ -12,7 +12,6 @@ namespace FightTheIce\Tests\Exceptions;
 
 class RuntimeExceptionTest extends \PHPUnit\Framework\TestCase
 {
-
     public function test_RuntimeException_FightTheIce_Exceptions_RuntimeException()
     {
         $this->expectException(\FightTheIce\Exceptions\RuntimeException::class);
@@ -47,8 +46,8 @@ class RuntimeExceptionTest extends \PHPUnit\Framework\TestCase
 
     public function test_RuntimeException_BaseException()
     {
-        $this->expectException(\FightTheIce\Exceptions\RuntimeException::class,'Custom Message',1);
-        throw new \FightTheIce\Exceptions\RuntimeException('Custom Message',1);
+        $this->expectException(\FightTheIce\Exceptions\RuntimeException::class, 'Custom Message', 1);
+        throw new \FightTheIce\Exceptions\RuntimeException('Custom Message', 1);
     }
 
     public function test_RuntimeException_setComponentName()
@@ -60,6 +59,4 @@ class RuntimeExceptionTest extends \PHPUnit\Framework\TestCase
 
         $this->assertEquals($componentName, $nameCheck);
     }
-
-
 }

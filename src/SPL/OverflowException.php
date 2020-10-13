@@ -16,8 +16,5 @@ use OverflowException as SPLOverflowException;
 
 class OverflowException extends SPLOverflowException implements ExceptionsInterface
 {
-
     use ComponentExceptionTrait;
-
-
 }

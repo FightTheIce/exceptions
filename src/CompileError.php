@@ -16,8 +16,5 @@ use CompileError as BaseCompileError;
 
 class CompileError extends BaseCompileError implements ExceptionsInterface
 {
-
     use ComponentExceptionTrait;
-
-
 }

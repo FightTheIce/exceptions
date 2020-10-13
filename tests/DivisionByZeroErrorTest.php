@@ -13,7 +13,6 @@ namespace FightTheIce\Tests\Exceptions;
 
 class DivisionByZeroErrorTest extends \PHPUnit\Framework\TestCase
 {
-
     public function test_DivisionByZeroError_FightTheIce_Exceptions_DivisionByZeroError()
     {
         $this->expectException(\FightTheIce\Exceptions\DivisionByZeroError::class);
@@ -54,8 +53,8 @@ class DivisionByZeroErrorTest extends \PHPUnit\Framework\TestCase
 
     public function test_DivisionByZeroError_BaseException()
     {
-        $this->expectException(\FightTheIce\Exceptions\DivisionByZeroError::class,'Custom Message',1);
-        throw new \FightTheIce\Exceptions\DivisionByZeroError('Custom Message',1);
+        $this->expectException(\FightTheIce\Exceptions\DivisionByZeroError::class, 'Custom Message', 1);
+        throw new \FightTheIce\Exceptions\DivisionByZeroError('Custom Message', 1);
     }
 
     public function test_DivisionByZeroError_setComponentName()
@@ -67,6 +66,4 @@ class DivisionByZeroErrorTest extends \PHPUnit\Framework\TestCase
 
         $this->assertEquals($componentName, $nameCheck);
     }
-
-
 }

@@ -16,8 +16,5 @@ use RuntimeException as SPLRuntimeException;
 
 class RuntimeException extends SPLRuntimeException implements ExceptionsInterface
 {
-
     use ComponentExceptionTrait;
-
-
 }

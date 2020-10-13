@@ -15,7 +15,6 @@ namespace FightTheIce\Tests\Exceptions;
 
 class ConstructAlreadyRunExceptionTest extends \PHPUnit\Framework\TestCase
 {
-
     public function test_ConstructAlreadyRunException_FightTheIce_Exceptions_Programming_ConstructAlreadyRunException()
     {
         $this->expectException(\FightTheIce\Exceptions\Programming\ConstructAlreadyRunException::class);
@@ -68,8 +67,8 @@ class ConstructAlreadyRunExceptionTest extends \PHPUnit\Framework\TestCase
 
     public function test_ConstructAlreadyRunException_BaseException()
     {
-        $this->expectException(\FightTheIce\Exceptions\Programming\ConstructAlreadyRunException::class,'Custom Message',1);
-        throw new \FightTheIce\Exceptions\Programming\ConstructAlreadyRunException('Custom Message',1);
+        $this->expectException(\FightTheIce\Exceptions\Programming\ConstructAlreadyRunException::class, 'Custom Message', 1);
+        throw new \FightTheIce\Exceptions\Programming\ConstructAlreadyRunException('Custom Message', 1);
     }
 
     public function test_ConstructAlreadyRunException_setComponentName()
@@ -81,6 +80,4 @@ class ConstructAlreadyRunExceptionTest extends \PHPUnit\Framework\TestCase
 
         $this->assertEquals($componentName, $nameCheck);
     }
-
-
 }

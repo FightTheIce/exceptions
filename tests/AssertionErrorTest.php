@@ -12,7 +12,6 @@ namespace FightTheIce\Tests\Exceptions;
 
 class AssertionErrorTest extends \PHPUnit\Framework\TestCase
 {
-
     public function test_AssertionError_FightTheIce_Exceptions_AssertionError()
     {
         $this->expectException(\FightTheIce\Exceptions\AssertionError::class);
@@ -47,8 +46,8 @@ class AssertionErrorTest extends \PHPUnit\Framework\TestCase
 
     public function test_AssertionError_BaseException()
     {
-        $this->expectException(\FightTheIce\Exceptions\AssertionError::class,'Custom Message',1);
-        throw new \FightTheIce\Exceptions\AssertionError('Custom Message',1);
+        $this->expectException(\FightTheIce\Exceptions\AssertionError::class, 'Custom Message', 1);
+        throw new \FightTheIce\Exceptions\AssertionError('Custom Message', 1);
     }
 
     public function test_AssertionError_setComponentName()
@@ -60,6 +59,4 @@ class AssertionErrorTest extends \PHPUnit\Framework\TestCase
 
         $this->assertEquals($componentName, $nameCheck);
     }
-
-
 }

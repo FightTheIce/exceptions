@@ -13,7 +13,6 @@ namespace FightTheIce\Tests\Exceptions;
 
 class RangeExceptionTest extends \PHPUnit\Framework\TestCase
 {
-
     public function test_RangeException_FightTheIce_Exceptions_RangeException()
     {
         $this->expectException(\FightTheIce\Exceptions\RangeException::class);
@@ -54,8 +53,8 @@ class RangeExceptionTest extends \PHPUnit\Framework\TestCase
 
     public function test_RangeException_BaseException()
     {
-        $this->expectException(\FightTheIce\Exceptions\RangeException::class,'Custom Message',1);
-        throw new \FightTheIce\Exceptions\RangeException('Custom Message',1);
+        $this->expectException(\FightTheIce\Exceptions\RangeException::class, 'Custom Message', 1);
+        throw new \FightTheIce\Exceptions\RangeException('Custom Message', 1);
     }
 
     public function test_RangeException_setComponentName()
@@ -67,6 +66,4 @@ class RangeExceptionTest extends \PHPUnit\Framework\TestCase
 
         $this->assertEquals($componentName, $nameCheck);
     }
-
-
 }

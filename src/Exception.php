@@ -16,8 +16,5 @@ use Exception as BaseException;
 
 class Exception extends BaseException implements ExceptionsInterface
 {
-
     use ComponentExceptionTrait;
-
-
 }

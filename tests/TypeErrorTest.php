@@ -12,7 +12,6 @@ namespace FightTheIce\Tests\Exceptions;
 
 class TypeErrorTest extends \PHPUnit\Framework\TestCase
 {
-
     public function test_TypeError_FightTheIce_Exceptions_TypeError()
     {
         $this->expectException(\FightTheIce\Exceptions\TypeError::class);
@@ -47,8 +46,8 @@ class TypeErrorTest extends \PHPUnit\Framework\TestCase
 
     public function test_TypeError_BaseException()
     {
-        $this->expectException(\FightTheIce\Exceptions\TypeError::class,'Custom Message',1);
-        throw new \FightTheIce\Exceptions\TypeError('Custom Message',1);
+        $this->expectException(\FightTheIce\Exceptions\TypeError::class, 'Custom Message', 1);
+        throw new \FightTheIce\Exceptions\TypeError('Custom Message', 1);
     }
 
     public function test_TypeError_setComponentName()
@@ -60,6 +59,4 @@ class TypeErrorTest extends \PHPUnit\Framework\TestCase
 
         $this->assertEquals($componentName, $nameCheck);
     }
-
-
 }

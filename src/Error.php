@@ -16,8 +16,5 @@ use Error as BaseError;
 
 class Error extends BaseError implements ExceptionsInterface
 {
-
     use ComponentExceptionTrait;
-
-
 }

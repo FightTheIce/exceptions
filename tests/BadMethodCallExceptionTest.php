@@ -14,7 +14,6 @@ namespace FightTheIce\Tests\Exceptions;
 
 class BadMethodCallExceptionTest extends \PHPUnit\Framework\TestCase
 {
-
     public function test_BadMethodCallException_FightTheIce_Exceptions_BadMethodCallException()
     {
         $this->expectException(\FightTheIce\Exceptions\BadMethodCallException::class);
@@ -61,8 +60,8 @@ class BadMethodCallExceptionTest extends \PHPUnit\Framework\TestCase
 
     public function test_BadMethodCallException_BaseException()
     {
-        $this->expectException(\FightTheIce\Exceptions\BadMethodCallException::class,'Custom Message',1);
-        throw new \FightTheIce\Exceptions\BadMethodCallException('Custom Message',1);
+        $this->expectException(\FightTheIce\Exceptions\BadMethodCallException::class, 'Custom Message', 1);
+        throw new \FightTheIce\Exceptions\BadMethodCallException('Custom Message', 1);
     }
 
     public function test_BadMethodCallException_setComponentName()
@@ -74,6 +73,4 @@ class BadMethodCallExceptionTest extends \PHPUnit\Framework\TestCase
 
         $this->assertEquals($componentName, $nameCheck);
     }
-
-
 }

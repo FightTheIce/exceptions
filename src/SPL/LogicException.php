@@ -16,8 +16,5 @@ use LogicException as SPLLogicException;
 
 class LogicException extends SPLLogicException implements ExceptionsInterface
 {
-
     use ComponentExceptionTrait;
-
-
 }

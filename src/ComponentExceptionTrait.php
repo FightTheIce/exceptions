@@ -4,7 +4,6 @@ namespace FightTheIce\Exceptions;
 
 trait ComponentExceptionTrait
 {
-
     protected $componentName = 'UNKNOWN';
 
     public function getComponentName()
@@ -16,6 +15,4 @@ trait ComponentExceptionTrait
     {
         $this->componentName = $component;
     }
-
-
 }

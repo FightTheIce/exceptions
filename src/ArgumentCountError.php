@@ -16,8 +16,5 @@ use ArgumentCountError as BaseArgumentCountError;
 
 class ArgumentCountError extends BaseArgumentCountError implements ExceptionsInterface
 {
-
     use ComponentExceptionTrait;
-
-
 }

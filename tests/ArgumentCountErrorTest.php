@@ -13,7 +13,6 @@ namespace FightTheIce\Tests\Exceptions;
 
 class ArgumentCountErrorTest extends \PHPUnit\Framework\TestCase
 {
-
     public function test_ArgumentCountError_FightTheIce_Exceptions_ArgumentCountError()
     {
         $this->expectException(\FightTheIce\Exceptions\ArgumentCountError::class);
@@ -54,8 +53,8 @@ class ArgumentCountErrorTest extends \PHPUnit\Framework\TestCase
 
     public function test_ArgumentCountError_BaseException()
     {
-        $this->expectException(\FightTheIce\Exceptions\ArgumentCountError::class,'Custom Message',1);
-        throw new \FightTheIce\Exceptions\ArgumentCountError('Custom Message',1);
+        $this->expectException(\FightTheIce\Exceptions\ArgumentCountError::class, 'Custom Message', 1);
+        throw new \FightTheIce\Exceptions\ArgumentCountError('Custom Message', 1);
     }
 
     public function test_ArgumentCountError_setComponentName()
@@ -67,6 +66,4 @@ class ArgumentCountErrorTest extends \PHPUnit\Framework\TestCase
 
         $this->assertEquals($componentName, $nameCheck);
     }
-
-
 }

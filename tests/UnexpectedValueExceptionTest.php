@@ -13,7 +13,6 @@ namespace FightTheIce\Tests\Exceptions;
 
 class UnexpectedValueExceptionTest extends \PHPUnit\Framework\TestCase
 {
-
     public function test_UnexpectedValueException_FightTheIce_Exceptions_UnexpectedValueException()
     {
         $this->expectException(\FightTheIce\Exceptions\UnexpectedValueException::class);
@@ -54,8 +53,8 @@ class UnexpectedValueExceptionTest extends \PHPUnit\Framework\TestCase
 
     public function test_UnexpectedValueException_BaseException()
     {
-        $this->expectException(\FightTheIce\Exceptions\UnexpectedValueException::class,'Custom Message',1);
-        throw new \FightTheIce\Exceptions\UnexpectedValueException('Custom Message',1);
+        $this->expectException(\FightTheIce\Exceptions\UnexpectedValueException::class, 'Custom Message', 1);
+        throw new \FightTheIce\Exceptions\UnexpectedValueException('Custom Message', 1);
     }
 
     public function test_UnexpectedValueException_setComponentName()
@@ -67,6 +66,4 @@ class UnexpectedValueExceptionTest extends \PHPUnit\Framework\TestCase
 
         $this->assertEquals($componentName, $nameCheck);
     }
-
-
 }

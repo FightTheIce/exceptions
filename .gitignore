@@ -7,3 +7,4 @@ test.php
 php.save
 .DS_Store
 blah.txt
+.php_cs.cache

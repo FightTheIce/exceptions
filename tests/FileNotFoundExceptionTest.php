@@ -13,7 +13,6 @@ namespace FightTheIce\Tests\Exceptions;
 
 class FileNotFoundExceptionTest extends \PHPUnit\Framework\TestCase
 {
-
     public function test_FileNotFoundException_FightTheIce_Exceptions_FileSystem_FileNotFoundException()
     {
         $this->expectException(\FightTheIce\Exceptions\FileSystem\FileNotFoundException::class);
@@ -54,8 +53,8 @@ class FileNotFoundExceptionTest extends \PHPUnit\Framework\TestCase
 
     public function test_FileNotFoundException_BaseException()
     {
-        $this->expectException(\FightTheIce\Exceptions\FileSystem\FileNotFoundException::class,'Custom Message',1);
-        throw new \FightTheIce\Exceptions\FileSystem\FileNotFoundException('Custom Message',1);
+        $this->expectException(\FightTheIce\Exceptions\FileSystem\FileNotFoundException::class, 'Custom Message', 1);
+        throw new \FightTheIce\Exceptions\FileSystem\FileNotFoundException('Custom Message', 1);
     }
 
     public function test_FileNotFoundException_setComponentName()
@@ -67,6 +66,4 @@ class FileNotFoundExceptionTest extends \PHPUnit\Framework\TestCase
 
         $this->assertEquals($componentName, $nameCheck);
     }
-
-
 }

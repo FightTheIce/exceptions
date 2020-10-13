@@ -16,8 +16,5 @@ use ParseError as BaseParseError;
 
 class ParseError extends BaseParseError implements ExceptionsInterface
 {
-
     use ComponentExceptionTrait;
-
-
 }

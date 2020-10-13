@@ -16,8 +16,5 @@ use ArithmeticError as BaseArithmeticError;
 
 class ArithmeticError extends BaseArithmeticError implements ExceptionsInterface
 {
-
     use ComponentExceptionTrait;
-
-
 }

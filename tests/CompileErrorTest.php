@@ -12,7 +12,6 @@ namespace FightTheIce\Tests\Exceptions;
 
 class CompileErrorTest extends \PHPUnit\Framework\TestCase
 {
-
     public function test_CompileError_FightTheIce_Exceptions_CompileError()
     {
         $this->expectException(\FightTheIce\Exceptions\CompileError::class);
@@ -47,8 +46,8 @@ class CompileErrorTest extends \PHPUnit\Framework\TestCase
 
     public function test_CompileError_BaseException()
     {
-        $this->expectException(\FightTheIce\Exceptions\CompileError::class,'Custom Message',1);
-        throw new \FightTheIce\Exceptions\CompileError('Custom Message',1);
+        $this->expectException(\FightTheIce\Exceptions\CompileError::class, 'Custom Message', 1);
+        throw new \FightTheIce\Exceptions\CompileError('Custom Message', 1);
     }
 
     public function test_CompileError_setComponentName()
@@ -60,6 +59,4 @@ class CompileErrorTest extends \PHPUnit\Framework\TestCase
 
         $this->assertEquals($componentName, $nameCheck);
     }
-
-
 }
